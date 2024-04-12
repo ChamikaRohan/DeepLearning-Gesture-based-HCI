@@ -69,13 +69,13 @@ def predict_gesture(cap, model_path):
                 predicted_probability = predictions[0][predicted_class]
 
                 if predicted_class == 0:
-                    if predicted_probability > 0.9999:
+                    if predicted_probability > 0.9:
                         gesture = 0
                     else:
                         gesture = None
 
                 elif predicted_class == 1:
-                    if predicted_probability > 0.999:
+                    if predicted_probability > 0.9:
                         gesture = 1
                     else:
                         gesture = None
@@ -93,7 +93,7 @@ def predict_gesture(cap, model_path):
                         gesture = None
 
                 elif predicted_class == 4:
-                    if predicted_probability > 0.8:
+                    if predicted_probability > 0.6:
                         gesture = 4
                     else:
                         gesture = None
@@ -112,3 +112,13 @@ def predict_gesture(cap, model_path):
             break
     cap.release()
     cv2.destroyAllWindows()
+
+"""
+cap = cv2.VideoCapture(0)
+model_path = "Media/6_gesture_model_9th_attempt_part_3_without_pretrained.h5"
+for gesture in predict_gesture(cap, model_path):
+    if gesture is None:
+        print("No gesture detected.")
+    else:
+        print("Predicted Gesture:", gesture)
+"""
