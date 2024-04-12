@@ -7,7 +7,7 @@ import mediapipe as mp
 def predict_gesture(cap, model_path):
     # Load the trained model
     model = load_model(model_path)
-    cv2.waitKey(1000)
+
     _, first_frame = cap.read()
     first_gray = cv2.cvtColor(first_frame, cv2.COLOR_BGR2GRAY)
     first_gray = cv2.GaussianBlur(first_gray, (5, 5), 0)
@@ -45,12 +45,12 @@ def predict_gesture(cap, model_path):
                         y_max = y
 
                 # Crop hand region from the difference frame with some padding
-                padding = 60
-                hand_crop = difference[max(0, y_min - padding):min(y_max + padding, difference.shape[0]),
+                padding = 30  # Adjust the padding as needed
+                hand_crop = difference[max(0, y_min - padding):min(y_max + 10, difference.shape[0]),
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
                 cv2.imshow("Hand Crop", hand_crop)
 
-                resized_img = cv2.resize(hand_crop, (64, 64))
+                resized_img = cv2.resize(hand_crop, (75, 75))
 
                 # Convert grayscale to RGB by repeating the single channel
                 img_rgb = cv2.cvtColor(resized_img, cv2.COLOR_GRAY2RGB)
@@ -61,7 +61,7 @@ def predict_gesture(cap, model_path):
 
                 # Make predictions
                 predictions = model.predict(img_array)
-
+                print(predictions)
                 # Get the predicted class label
                 predicted_class = np.argmax(predictions)
 
@@ -75,13 +75,13 @@ def predict_gesture(cap, model_path):
                         gesture = None
 
                 elif predicted_class == 1:
-                    if predicted_probability > 0.99:
+                    if predicted_probability > 0.999:
                         gesture = 1
                     else:
                         gesture = None
 
                 elif predicted_class == 2:
-                    if predicted_probability > 0.85:
+                    if predicted_probability > 0.8:
                         gesture = 2
                     else:
                         gesture = None
@@ -93,8 +93,13 @@ def predict_gesture(cap, model_path):
                         gesture = None
 
                 elif predicted_class == 4:
-                    if predicted_probability > 0.87:
+                    if predicted_probability > 0.8:
                         gesture = 4
+                    else:
+                        gesture = None
+                elif predicted_class == 5:
+                    if predicted_probability > 0.6:
+                        gesture = 5
                     else:
                         gesture = None
                 yield gesture

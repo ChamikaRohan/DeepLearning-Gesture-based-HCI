@@ -7,7 +7,7 @@ def rename_files(directory):
     files.sort()
 
     # Initialize a counter
-    count = 1301
+    count = 1
 
     # Iterate through all files
     for file in files:
@@ -40,7 +40,7 @@ def rename_files(directory):
     print("All files renamed successfully!")
 
 # Replace 'your_directory_path' with the path to your directory containing the images
-directory_path = r'C:\Users\M\Desktop\Dataset Development\8\dataset-9-gestures\test\test\5'
+directory_path = r'C:\Users\M\Desktop\train\train\5'
 
 # Call the function to rename files in the specified directory
 rename_files(directory_path)
