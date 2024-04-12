@@ -1,5 +1,6 @@
 import pyautogui
 import time
+from FocusOnWindow import focus_on_window
 
 """
 Function to control presentation slides
@@ -11,7 +12,13 @@ Gesture Mapping:
 3: Exit slide show mode
 """
 def control_presentation(gesture):
-    if gesture == 0:
+    # Find the active window
+    window_titles = ["Movies", "VLC"]
+    for title in window_titles:
+        focus_on_window(title)
+    if gesture == None:
+        print("None")
+    elif gesture == 0:
         # Go to previous slide
         print("Go to Previous Slide")
         pyautogui.hotkey("left")
@@ -27,5 +34,4 @@ def control_presentation(gesture):
         # Exit full screen mode
         print("Exit Slide Show Mode")
         pyautogui.press("esc")
-    time.sleep(1)  # Add a small delay after each action
 

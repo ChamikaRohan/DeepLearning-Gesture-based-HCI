@@ -1,6 +1,6 @@
 import pyautogui
 import time
-import pygetwindow as gw
+from FocusOnWindow import focus_on_window
 
 """
 Function to control media player
@@ -13,9 +13,12 @@ Gesture 3: Decrease system volume
 """
 def control_media_player(gesture):
     # Find the active window
-    active_window = gw.getActiveWindow()
-    print(active_window)
-    if gesture == 0:
+    window_titles = ["Movies", "VLC"]
+    for title in window_titles:
+        focus_on_window(title)
+    if gesture == None:
+        print("None")
+    elif gesture == 0:
         # Stop media
         pyautogui.press("space")
         print("Media Stopped/Paused")
@@ -31,7 +34,3 @@ def control_media_player(gesture):
         # Decrease system volume
         pyautogui.press("volumedown")
         print("System Volume Decreased")
-    time.sleep(1)  # Add a small delay after each action
-
-time.sleep(2)
-control_media_player(2)
