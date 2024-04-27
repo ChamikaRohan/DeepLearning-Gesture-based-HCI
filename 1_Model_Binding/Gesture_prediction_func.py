@@ -50,7 +50,7 @@ def predict_gesture(cap, model_path):
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
                 cv2.imshow("Hand Crop", hand_crop)
 
-                resized_img = cv2.resize(hand_crop, (75, 75))
+                resized_img = cv2.resize(hand_crop, (64, 64))
 
                 # Convert grayscale to RGB by repeating the single channel
                 img_rgb = cv2.cvtColor(resized_img, cv2.COLOR_GRAY2RGB)
