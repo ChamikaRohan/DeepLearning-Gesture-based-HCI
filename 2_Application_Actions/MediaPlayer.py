@@ -7,7 +7,7 @@ Function to control media player
 
 Gesture Mapping:
 Gesture 0: Stop the media (specific player dependent)
-Gesture 1: Play/Pause the media (specific player dependent)
+Gesture 4: Play/Pause the media (specific player dependent)
 Gesture 2: Increase system volume
 Gesture 3: Decrease system volume
 """
@@ -22,7 +22,7 @@ def control_media_player(gesture):
         # Stop media
         pyautogui.press("space")
         print("Media Stopped/Paused")
-    elif gesture == 1:
+    elif gesture == 4:
         # Play/Pause media
         pyautogui.press("space")
         print("Media Play/Continue")

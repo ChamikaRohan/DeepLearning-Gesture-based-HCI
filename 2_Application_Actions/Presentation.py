@@ -7,13 +7,13 @@ Function to control presentation slides
 
 Gesture Mapping:
 0: Go to previous slide (left)
-1: Go to next slide (right)
+4: Go to next slide (right)
 2: Enter slide show mode
 3: Exit slide show mode
 """
 def control_presentation(gesture):
     # Find the active window
-    window_titles = ["Movies", "VLC"]
+    window_titles = ["PowerPoint"]
     for title in window_titles:
         focus_on_window(title)
     if gesture == None:
@@ -22,7 +22,7 @@ def control_presentation(gesture):
         # Go to previous slide
         print("Go to Previous Slide")
         pyautogui.hotkey("left")
-    elif gesture == 1:
+    elif gesture == 4:
         # Go to next slide
         print("Go to Next Slide")
         pyautogui.hotkey("right")

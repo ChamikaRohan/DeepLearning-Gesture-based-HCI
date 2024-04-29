@@ -4,8 +4,7 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import mediapipe as mp
 
-def predict_gesture(cap, model_path):
-    # Load the trained model
+def predict_gesture(cap, model_path):    # Load the trained model
     model = load_model(model_path)
 
     _, first_frame = cap.read()
@@ -61,7 +60,7 @@ def predict_gesture(cap, model_path):
 
                 # Make predictions
                 predictions = model.predict(img_array)
-                print(predictions)
+                #print(predictions)
                 # Get the predicted class label
                 predicted_class = np.argmax(predictions)
 

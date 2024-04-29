@@ -23,13 +23,19 @@ def default_function(gesture  ):
 def orchestrator(gesture):
     global memory, state, action
 
+    print("Current action: ")
+    print(action)
+
+    print("Current gestures: ")
+    print(gesture)
+
     if state == False:
         if gesture is not None:
             if memory is not None:
                 if gesture == 1:
                     state = True
                     action = memory
-                    print("Action: " + str(action)   + " selected")
+                    print("Switching to application "+ str(action)   +"...........")
                     select_function(action, gesture  )
                 else:
                     action = None
@@ -45,9 +51,12 @@ def orchestrator(gesture):
             return
     else:
         select_function(action, gesture)
+        print("What memory has....")
+        print(memory)
         if gesture ==1:
             if memory is not None:
                 state = False
                 orchestrator(gesture)
+                print("Switching to new application...........")
         memory =  gesture
 
