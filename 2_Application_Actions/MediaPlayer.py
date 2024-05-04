@@ -13,7 +13,7 @@ Gesture 3: Decrease system volume
 """
 def control_media_player(gesture):
     # Find the active window
-    window_titles = ["Movies", "VLC"]
+    window_titles = ["Movies", "VLC media player"]
     for title in window_titles:
         focus_on_window(title)
     if gesture == None:

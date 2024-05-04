@@ -10,7 +10,8 @@ def select_function(argument, gestures):
         0: default_function,
         2: control_media_player,
         3: control_presentation,
-        4: default_function
+        4: default_function,
+        5: default_function
     }
     # Get the function from switcher dictionary
     func = switcher.get(argument, default_function)
@@ -23,11 +24,8 @@ def default_function(gesture  ):
 def orchestrator(gesture):
     global memory, state, action
 
-    print("Current action: ")
-    print(action)
-
-    print("Current gestures: ")
-    print(gesture)
+    print("Current action:", action)
+    print("What memory has:", memory)
 
     if state == False:
         if gesture is not None:
@@ -35,13 +33,14 @@ def orchestrator(gesture):
                 if gesture == 1:
                     state = True
                     action = memory
-                    print("Switching to application "+ str(action)   +"...........")
+                    print("Successfully switched to to application "+ str(action))
                     select_function(action, gesture  )
                 else:
-                    action = None
-                    memory = gesture
-                    state = False
-                    print("Need 1 to confirm!")
+                    if gesture != 1:
+                        action = None
+                        memory = gesture
+                        state = False
+                        print("Need 1 to confirm!")
             else:
                 if gesture != 1:
                     memory = gesture
@@ -50,13 +49,13 @@ def orchestrator(gesture):
         else:
             return
     else:
-        select_function(action, gesture)
-        print("What memory has....")
-        print(memory)
-        if gesture ==1:
-            if memory is not None:
-                state = False
-                orchestrator(gesture)
-                print("Switching to new application...........")
-        memory =  gesture
+        if gesture is not None:
+            select_function(action, gesture)
+            if gesture ==1:
+                if memory is not None:
+                    state = False
+                    orchestrator(gesture)
+                    print("Switching to new application...........")
+            if gesture != 1:
+                memory =  gesture
 

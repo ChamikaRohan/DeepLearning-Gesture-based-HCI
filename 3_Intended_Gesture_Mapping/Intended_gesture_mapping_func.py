@@ -33,7 +33,7 @@ def intended_gesture_map(predicted_class, consecutive_frames):
     for gesture, count in consecutive_frames.items():
         intended_gesture = None
         for gesture, count in consecutive_frames.items():
-            if count == 3:
+            if count == 5:
                 intended_gesture = gesture
                 break
 

@@ -16,4 +16,7 @@ cap = cv2.VideoCapture(0)
  # Initialize the consecutive frames
 consecutive_frames = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 for gesture in predict_gesture(cap, model_path):
-    orchestrator(intended_gesture_map(gesture,consecutive_frames))
+    print("Predicted Gesture:", gesture)
+    intended_gesture = intended_gesture_map(gesture,consecutive_frames)
+    print("Intended Gesture:", intended_gesture)
+    orchestrator(intended_gesture)
