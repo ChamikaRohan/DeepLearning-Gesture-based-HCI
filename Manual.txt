@@ -1,0 +1,9 @@
+Gesture names and numbers map
+{
+    0: 'Gesture palm',
+    1: 'Gesture thumbs up',
+    2: 'Gesture rock',
+    3: 'Gesture thumbs left',
+    4: 'Gesture V',
+    5: 'Gesture |_'
+}

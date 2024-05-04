@@ -7,10 +7,10 @@ action =None
 
 def select_function(argument, gestures):
     switcher = {
-        0: default_function,
+        0: control_media_player,
         2: control_media_player,
-        3: control_presentation,
-        4: default_function,
+        3: default_function,
+        4: control_presentation,
         5: default_function
     }
     # Get the function from switcher dictionary
