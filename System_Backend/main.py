@@ -7,7 +7,7 @@ from Orchestrator import orchestrator
 sys.path.append('../1_Model_Binding')
 from Gesture_prediction_func import predict_gesture
 
-sys.path.append('../3_Intended_Gesture_Mapping/Inteded_gesture_map_funcs')
+sys.path.append('../3_Intended_Gesture_Mapping')
 from Intended_gesture_mapping_func import intended_gesture_map
 
 model_path = "../1_Model_Binding/Media/6_gesture_model_9th_attempt_part_3_without_pretrained.h5"
