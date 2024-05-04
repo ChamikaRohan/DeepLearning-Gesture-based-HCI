@@ -1,6 +1,5 @@
 import pyautogui
-import time
-from FocusOnWindow import focus_on_window
+from Utils.Focus_on_window import focus_on_window
 
 """
 Function to control media player
