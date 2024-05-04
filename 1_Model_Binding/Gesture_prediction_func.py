@@ -49,7 +49,7 @@ def predict_gesture(cap, model_path):    # Load the trained model
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
                 cv2.imshow("Hand Crop", hand_crop)
 
-                resized_img = cv2.resize(hand_crop, (64, 64))
+                resized_img = cv2.resize(hand_crop, (75, 75))
 
                 # Convert grayscale to RGB by repeating the single channel
                 img_rgb = cv2.cvtColor(resized_img, cv2.COLOR_GRAY2RGB)
@@ -97,7 +97,7 @@ def predict_gesture(cap, model_path):    # Load the trained model
                     else:
                         gesture = None
                 elif predicted_class == 5:
-                    if predicted_probability > 0.6:
+                    if predicted_probability > 0.5:
                         gesture = 5
                     else:
                         gesture = None
@@ -121,3 +121,4 @@ for gesture in predict_gesture(cap, model_path):
     else:
         print("Predicted Gesture:", gesture)
 """
+
