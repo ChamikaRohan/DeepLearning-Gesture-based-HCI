@@ -1,0 +1,17 @@
+from Text_to_speech_generator import text_to_speech
+
+def speak_application(gesture):
+    # Dictionary mapping option numbers to application names
+    applications = {
+        0: "media player",
+        2: "system",
+        3: "default function",
+        4: "presentation",
+        5: "reading or browser"
+    }
+
+    # Convert the selected option to speech
+    if gesture in applications:
+        text_to_speech(f"Switched to {applications[gesture]} control.")
+    else:
+        text_to_speech("Invalid option.")

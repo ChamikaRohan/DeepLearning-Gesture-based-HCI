@@ -1,7 +1,10 @@
+import sys
 from MediaPlayer import control_media_player
 from Presentation import control_presentation
 from System import control_system
 from Reading_and_browsing import control_reading_or_browser
+sys.path.append('../4_Voice_Assistance')
+from Switched_application_notifyer import speak_application
 
 memory = None
 state = False
@@ -37,6 +40,7 @@ def orchestrator(gesture):
                     action = memory
                     print("Successfully switched to to application "+ str(action))
                     select_function(action, gesture  )
+                    speak_application(action)
                 else:
                     if gesture != 1:
                         action = None
