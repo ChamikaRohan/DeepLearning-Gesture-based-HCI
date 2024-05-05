@@ -1,5 +1,6 @@
 from MediaPlayer import control_media_player
 from Presentation import control_presentation
+from System import control_system
 
 memory = None
 state = False
@@ -8,7 +9,7 @@ action =None
 def select_function(argument, gestures):
     switcher = {
         0: control_media_player,
-        2: default_function,
+        2: control_system,
         3: default_function,
         4: control_presentation,
         5: default_function
