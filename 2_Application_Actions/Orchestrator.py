@@ -1,6 +1,7 @@
 from MediaPlayer import control_media_player
 from Presentation import control_presentation
 from System import control_system
+from Reading_and_browsing import control_reading_or_browser
 
 memory = None
 state = False
@@ -12,7 +13,7 @@ def select_function(argument, gestures):
         2: control_system,
         3: default_function,
         4: control_presentation,
-        5: default_function
+        5: control_reading_or_browser
     }
     # Get the function from switcher dictionary
     func = switcher.get(argument, default_function)

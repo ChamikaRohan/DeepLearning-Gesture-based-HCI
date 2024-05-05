@@ -3,9 +3,6 @@ from Utils.Focus_on_window import focus_on_window
 from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 import time
 
-# Global variable to store the previous hand position
-previous_position = pyautogui.position()
-
 """
 Function to control system functionalities
 
@@ -28,19 +25,14 @@ def control_system(gesture):
         pyautogui.press('tab')
         pyautogui.press('tab')
         pyautogui.keyUp('alt')
-    if gesture == 4:
-        print("Scrolling down")
-        pyautogui.scroll(-80)
-        for _ in range(10):
-            pyautogui.scroll(-50)
+    elif gesture == 4:
+        print("Increase System Volume")
+        pyautogui.hotkey('volumeup')
     elif gesture == 0:
-        print("Scrolling up")
-        pyautogui.scroll(80)
-        for _ in range(10):
-            pyautogui.scroll(50)
+        print("Decrease System Volume")
+        pyautogui.hotkey('volumedown')
     # elif gesture == 2:
     #     print("Activate sleep mode")
     #     pyautogui.hotkey("winleft", "x")
     #     pyautogui.typewrite("u")
     #     pyautogui.typewrite("s")
-
