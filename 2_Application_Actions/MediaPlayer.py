@@ -1,5 +1,6 @@
 import pyautogui
 from Utils.Focus_on_window import focus_on_window
+import time
 
 """
 Function to control media player
@@ -20,6 +21,7 @@ def control_media_player(gesture):
     elif gesture == 0:
         pyautogui.press("space")
         print("Play/Stop the movie")
+        time.sleep(1)
     elif gesture == 4:
         pyautogui.scroll(1)
         print("Volume Increased")
@@ -29,3 +31,4 @@ def control_media_player(gesture):
     elif gesture == 3:
         pyautogui.press("f")
         print("Switch to full-screen mode")
+        time.sleep(1)

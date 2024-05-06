@@ -26,6 +26,7 @@ def control_presentation(gesture):
             pyautogui.press("esc")  # If in full screen, exit full screen mode
         else:
             pyautogui.press("f5")
+        time.sleep(1)
     elif gesture == 3:
         print("Switch to Next Slide")
         pyautogui.hotkey("right")

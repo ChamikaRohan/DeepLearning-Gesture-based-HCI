@@ -7,10 +7,11 @@ import time
 Function to control system functionalities
 
 Gesture Mapping:
-0: Go to previous slide (left)
-4: Go to next slide (right)
-2: Enter slide show mode
-3: Exit slide show mode
+5: Taking a screenshot
+3: Switch between applications
+4: Increase System Volume
+0: Decrease System Volume
+2: Activate sleep mode
 """
 def control_system(gesture):
     if gesture == None:

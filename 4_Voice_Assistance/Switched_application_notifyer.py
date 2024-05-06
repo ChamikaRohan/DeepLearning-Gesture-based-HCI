@@ -5,9 +5,9 @@ def speak_application(gesture):
     applications = {
         0: "media player",
         2: "system",
-        3: "default function",
+        3: "reading",
         4: "presentation",
-        5: "reading or browser"
+        5: "youtube"
     }
 
     # Convert the selected option to speech

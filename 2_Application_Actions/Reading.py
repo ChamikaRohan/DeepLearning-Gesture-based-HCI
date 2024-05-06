@@ -7,12 +7,12 @@ import time
 Function to control reading and browsing functionalities
 
 Gesture Mapping:
-0: Go to previous slide (left)
-4: Go to next slide (right)
-2: Enter slide show mode
-3: Exit slide show mode
+4: Scrolling down
+0: Scrolling up
+3: Zooming in
+2: Zooming out
 """
-def control_reading_or_browser(gesture):
+def control_reading(gesture):
     #Find and activae the movie player window
     window_titles = ["Microsoft Edge", "Word", "Google Chrome"]
     for title in window_titles:
