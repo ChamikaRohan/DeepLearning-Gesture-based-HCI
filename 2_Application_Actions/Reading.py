@@ -14,7 +14,7 @@ Gesture Mapping:
 """
 def control_reading(gesture):
     #Find and activae the movie player window
-    window_titles = ["Microsoft Edge", "Word", "Google Chrome"]
+    window_titles =  [" - Microsoft​ Edge"]
     for title in window_titles:
         focus_on_window(title)
     if gesture == None:
@@ -31,14 +31,9 @@ def control_reading(gesture):
             pyautogui.scroll(50)
     elif gesture == 3:
         print("Zooming in")
-        pyautogui.keyDown('ctrl')
-        pyautogui.press('+')
-        pyautogui.keyUp('ctrl')
+        pyautogui.hotkey("ctrl", "+")
     elif gesture == 2:
         print("Zooming out")
-        pyautogui.keyDown('ctrl')
-        pyautogui.press('-')
-        pyautogui.keyUp('ctrl')
-
+        pyautogui.hotkey("ctrl", "_")
 
 

@@ -26,6 +26,7 @@ def control_youtube(gesture):
     if not youtube_opened:
         webbrowser.open("https://www.youtube.com")
         youtube_opened = True
+        time.sleep(2)
 
     #Find and activae the YouTube-Google Chrome window
     window_titles = ["YouTube - Google Chrome"]
@@ -45,8 +46,9 @@ def control_youtube(gesture):
             pyautogui.scroll(50)
     elif gesture == 3:
         print("Search Youtube")
-        time.sleep(2)
         pyautogui.click(x=800, y=190)
+        pyautogui.hotkey("ctrl", "a")
+        pyautogui.hotkey('backspace')
         text = speech_to_text()
 
         while text is None:
@@ -61,10 +63,11 @@ def control_youtube(gesture):
     elif gesture == 2:
         print("Play video")
         pyautogui.click(x=800, y=600)
-        time.sleep(3)
+        time.sleep(2)
     elif gesture == 5:
         print("Activate full-screen mode")
         pyautogui.press('f')
+        time.sleep(2)
 
 
 

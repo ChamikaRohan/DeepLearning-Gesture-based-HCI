@@ -2,7 +2,6 @@ import time
 
 import pyautogui
 from Utils.Focus_on_window import focus_on_window
-from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 
 """
 Function to control presentation slides
@@ -21,12 +20,12 @@ def control_presentation(gesture):
     if gesture == None:
         return
     elif gesture == 0:
-        print("Slide Show Mode On/Off")
-        if is_fullscreen_mode():
-            pyautogui.press("esc")  # If in full screen, exit full screen mode
-        else:
-            pyautogui.press("f5")
+        print("Slide Show Mode On")
+        pyautogui.press("f5")
         time.sleep(1)
+    elif gesture == 5:
+        print("Slide Show Mode Off")
+        pyautogui.press("esc")
     elif gesture == 3:
         print("Switch to Next Slide")
         pyautogui.hotkey("right")
@@ -35,7 +34,4 @@ def control_presentation(gesture):
         print("Switch to Previous Slide")
         pyautogui.hotkey("left")
         time.sleep(0.5)
-
-
-
 
