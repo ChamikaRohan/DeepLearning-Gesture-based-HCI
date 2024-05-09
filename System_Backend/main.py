@@ -19,7 +19,6 @@ cap = cv2.VideoCapture(0)
 
 mode = mode_selector()
 
- # Initialize the consecutive frames
 consecutive_frames = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0}
 for gesture in predict_gesture(cap, model_path):
     print("Predicted Gesture:", gesture)
