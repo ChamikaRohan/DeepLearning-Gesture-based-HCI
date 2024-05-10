@@ -1,3 +1,5 @@
+import time
+
 from MediaPlayer import control_media_player
 from Presentation import control_presentation
 from System import control_system
@@ -5,8 +7,8 @@ from Reading import control_reading
 from Youtube import control_youtube
 import sys
 
-sys.path.append('../2_Application_Actions/utils')
-from Button_press_checker import check_backtick_pressed
+sys.path.append('../2_Application_Actions/Utils')
+from Current_application_checker import get_active_application
 
 def select_function(argument, gestures):
     switcher = {
@@ -24,18 +26,14 @@ def select_function(argument, gestures):
 def default_function(gesture):
     print("Invalid action called!")
 
-state = False
-choice = None
 def navigator(gesture):
-    global state, choice
-    if(state == False):
-        print("Please select an application to control:")
-        print("0: Media Player")
-        print("1: System")
-        print("2: Reading")
-        print("3: Presentation")
-        print("4: Youtube")
-        choice = int(input("Enter the number corresponding to the application: ").strip())
-        state = True
-    else:
-        select_function(choice, gesture)
+    print("inside tha navigator")
+    if gesture is not None:
+        print("calling the function for active applicattion")
+        active_application = get_active_application()
+        print("active application is :", active_application)
+        if active_application is not None:
+            select_function(active_application, gesture)
+            print("Switching to the application")
+
+    return
