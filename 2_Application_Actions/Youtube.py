@@ -8,6 +8,7 @@ from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 
 sys.path.append('../4_Voice_Assistance')
 from Speech_to_text_generator import speech_to_text
+from Text_to_speech_generator import text_to_speech
 
 # Variable to track if YouTube has been opened before
 youtube_opened = False
@@ -55,6 +56,8 @@ def control_youtube(gesture):
             text = speech_to_text()
             if text is None:
                 print("Speech recognition failed. Trying again...")
+                text_to_speech("Speech recognition failed. Trying again...")
+                break
 
         print("Typing '{}' into the search bar".format(text))
         pyautogui.typewrite(text, interval=0.1)

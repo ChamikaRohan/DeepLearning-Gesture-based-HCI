@@ -1,8 +1,12 @@
 import cv2
+import sys
 import numpy as np
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import mediapipe as mp
+
+sys.path.append('../User_Interface')
+from Window_pinner import window_pinner
 
 def predict_gesture(cap, model_path):    # Load the trained model
     model = load_model(model_path)
@@ -106,6 +110,7 @@ def predict_gesture(cap, model_path):    # Load the trained model
         cv2.imshow("First frame", first_frame)
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
+        window_pinner("Hand Crop")
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

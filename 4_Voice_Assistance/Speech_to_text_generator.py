@@ -12,5 +12,7 @@ def speech_to_text(timeout=5):
         return text
     except sr.UnknownValueError:
         print("Sorry, I couldn't understand what you said.")
+        return None
     except sr.RequestError as e:
         print("Sorry, I couldn't request results from Google Speech Recognition service; {0}".format(e))
+        return None
