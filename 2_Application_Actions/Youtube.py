@@ -9,9 +9,7 @@ from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 sys.path.append('../4_Voice_Assistance')
 from Speech_to_text_generator import speech_to_text
 from Text_to_speech_generator import text_to_speech
-
-# Variable to track if YouTube has been opened before
-youtube_opened = False
+from Utils.URL_Reader import URL_origin_finder
 
 """
 Function to control reading and browsing functionalities
@@ -23,12 +21,6 @@ Gesture Mapping:
 2: Zooming out
 """
 def control_youtube(gesture):
-    global youtube_opened
-    if not youtube_opened:
-        webbrowser.open("https://www.youtube.com")
-        youtube_opened = True
-        time.sleep(2)
-
     #Find and activae the YouTube-Google Chrome window
     window_titles = ["YouTube - Google Chrome"]
     for title in window_titles:
@@ -51,18 +43,14 @@ def control_youtube(gesture):
         pyautogui.hotkey("ctrl", "a")
         pyautogui.hotkey('backspace')
         text = speech_to_text()
-
-        while text is None:
-            text = speech_to_text()
-            if text is None:
-                print("Speech recognition failed. Trying again...")
-                text_to_speech("Speech recognition failed. Trying again...")
-                break
-
-        print("Typing '{}' into the search bar".format(text))
-        pyautogui.typewrite(text, interval=0.1)
-        pyautogui.press('enter')
-        time.sleep(2)
+        print(text)
+        if text is None:
+            print("Speech recognition failed. Please try again...")
+        else:
+            print("Typing '{}' into the search bar".format(text))
+            pyautogui.typewrite(text, interval=0.1)
+            pyautogui.press('enter')
+            time.sleep(2)
     elif gesture == 2:
         print("Play video")
         pyautogui.click(x=800, y=600)

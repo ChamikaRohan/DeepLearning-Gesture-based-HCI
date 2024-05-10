@@ -5,7 +5,7 @@ import win32gui
 import win32process
 import psutil
 import pygetwindow as gw
-
+from URL_Reader import URL_origin_finder
 
 model_path = "../1_Model_Binding/Media/6_gesture_model_9th_attempt_part_3_without_pretrained.h5"
 cap = cv2.VideoCapture(0)
@@ -42,9 +42,11 @@ def get_active_application():
                 application = 2
                 break;
             elif process_name == 'chrome.exe':
-                application = 4
-                break;
+                if URL_origin_finder() == 'youtube':
+                    application = 4
+                    break;
             else:
                 application = None
-    print(f"Active Application: {application}->{process_name}")
+    print(f"Active Application: {process_name} -> {application}")
     return application
+
