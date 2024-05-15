@@ -46,7 +46,8 @@ def get_active_application():
                     application = 4
                     break;
             else:
-                application = None
+                application = 1
+                break;
     print(f"Active Application: {process_name} -> {application}")
     return application
 
