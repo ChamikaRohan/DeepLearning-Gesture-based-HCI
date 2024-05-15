@@ -5,16 +5,15 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import mediapipe as mp
 
-from Utils.First_frame_getter import first_frame_getter
-
 sys.path.append('../User_Interface')
 from Window_pinner import window_pinner
 
-sys.path.append('../1_Model_Binding')
-from Utils.First_frame_getter import first_frame_getter
-
-def predict_gesture(cap, model_path, first_gray):
+def predict_gesture(cap, model_path):    # Load the trained model
     model = load_model(model_path)
+
+    _, first_frame = cap.read()
+    first_gray = cv2.cvtColor(first_frame, cv2.COLOR_BGR2GRAY)
+    first_gray = cv2.GaussianBlur(first_gray, (5, 5), 0)
 
     # Initialize MediaPipe Hands
     mp_hands = mp.solutions.hands
@@ -108,23 +107,23 @@ def predict_gesture(cap, model_path, first_gray):
                         gesture = None
                 yield gesture
 
+        cv2.imshow("First frame", first_frame)
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
         window_pinner("Hand Crop")
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            first_gray = first_frame_getter(cap)
+            break
+    cap.release()
+    cv2.destroyAllWindows()
 
 """
 cap = cv2.VideoCapture(0)
-update_first_frame = False
-first_gray = first_frame_getter(cap)
 model_path = "Media/6_gesture_model_9th_attempt_part_3_without_pretrained.h5"
-for gesture in predict_gesture(cap, model_path, first_gray):
+for gesture in predict_gesture(cap, model_path):
     if gesture is None:
         print("No gesture detected.")
-    elif gesture == 999:
-        
     else:
         print("Predicted Gesture:", gesture)
-
 """
+
