@@ -13,6 +13,7 @@ from Window_pinner import window_pinner
 sys.path.append('../1_Model_Binding')
 from Utils.First_frame_getter import first_frame_getter
 
+
 def predict_gesture(cap, model_path, first_gray):
     model = load_model(model_path)
 
@@ -65,7 +66,7 @@ def predict_gesture(cap, model_path, first_gray):
 
                 # Make predictions
                 predictions = model.predict(img_array)
-                #print(predictions)
+                # print(predictions)
                 # Get the predicted class label
                 predicted_class = np.argmax(predictions)
 
@@ -73,25 +74,25 @@ def predict_gesture(cap, model_path, first_gray):
                 predicted_probability = predictions[0][predicted_class]
 
                 if predicted_class == 0:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.6:
                         gesture = 0
                     else:
                         gesture = None
 
                 elif predicted_class == 1:
-                    if predicted_probability > 0.8:
+                    if predicted_probability > 0.6:
                         gesture = 1
                     else:
                         gesture = None
 
                 elif predicted_class == 2:
-                    if predicted_probability > 0.8:
+                    if predicted_probability > 0.6:
                         gesture = 2
                     else:
                         gesture = None
 
                 elif predicted_class == 3:
-                    if predicted_probability > 0.8:
+                    if predicted_probability > 0.6:
                         gesture = 3
                     else:
                         gesture = None
@@ -102,13 +103,18 @@ def predict_gesture(cap, model_path, first_gray):
                     else:
                         gesture = None
                 elif predicted_class == 5:
-                    if predicted_probability > 0.5:
+                    if predicted_probability > 0.6:
                         gesture = 5
                     else:
                         gesture = None
                 elif predicted_class == 6:
-                    if predicted_probability > 0.5:
+                    if predicted_probability > 0.6:
                         gesture = 6
+                    else:
+                        gesture = None
+                elif predicted_class == 7:
+                    if predicted_probability > 0.6:
+                        gesture = 7
                     else:
                         gesture = None
                 yield gesture
@@ -122,17 +128,18 @@ def predict_gesture(cap, model_path, first_gray):
             gesture = 's'
             yield gesture
 
+
 """
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
-model_path = "Media/6_gesture_model_9th_attempt_part_3_without_pretrained.h5"
+model_path = "Media/8_gesture_model_19th_attempt.h5"
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture is None:
         print("No gesture detected.")
-    elif gesture == 999:
-        
     else:
         print("Predicted Gesture:", gesture)
+
+
 
 """

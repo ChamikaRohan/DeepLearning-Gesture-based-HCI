@@ -18,7 +18,9 @@ def select_function(argument, gestures):
         2: control_system,
         3: control_reading,
         4: control_presentation,
-        5: control_youtube
+        5: control_youtube,
+        6: default_function,
+        7: default_function
     }
     # Get the function from switcher dictionary
     func = switcher.get(argument, default_function)
