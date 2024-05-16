@@ -79,7 +79,7 @@ def predict_gesture(cap, model_path, first_gray):
                         gesture = None
 
                 elif predicted_class == 1:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.8:
                         gesture = 1
                     else:
                         gesture = None
@@ -91,7 +91,7 @@ def predict_gesture(cap, model_path, first_gray):
                         gesture = None
 
                 elif predicted_class == 3:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.8:
                         gesture = 3
                     else:
                         gesture = None
@@ -107,7 +107,7 @@ def predict_gesture(cap, model_path, first_gray):
                     else:
                         gesture = None
                 elif predicted_class == 6:
-                    if predicted_probability > 0.6:
+                    if predicted_probability > 0.5:
                         gesture = 6
                     else:
                         gesture = None
