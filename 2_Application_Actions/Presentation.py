@@ -7,10 +7,10 @@ from Utils.Focus_on_window import focus_on_window
 Function to control presentation slides
 
 Gesture Mapping:
-0: Go to previous slide (left)
-4: Go to next slide (right)
-2: Enter slide show mode
-3: Exit slide show mode
+4: Go to previous slide (left)
+3: Go to next slide (right)
+0: Enter slide show mode
+5: Exit slide show mode
 """
 def control_presentation(gesture):
     #Find and activae the presentation window
