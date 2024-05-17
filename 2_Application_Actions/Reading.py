@@ -11,6 +11,7 @@ Gesture Mapping:
 0: Scrolling up
 3: Zooming in
 2: Zooming out
+5: Toggle Full-Screen Mode
 """
 def control_reading(gesture):
     #Find and activae the movie player window
@@ -35,5 +36,9 @@ def control_reading(gesture):
     elif gesture == 2:
         print("Zooming out")
         pyautogui.hotkey("ctrl", "_")
+    elif gesture == 5:
+        print("Toggling Full-Screen Mode")
+        pyautogui.hotkey("f11")
+
 
 
