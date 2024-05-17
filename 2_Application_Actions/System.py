@@ -12,6 +12,7 @@ Gesture Mapping:
 4: Increase System Volume
 0: Decrease System Volume
 2: Activate sleep mode
+6: Open Task Manager
 """
 def control_system(gesture):
     if gesture == None:
@@ -32,8 +33,11 @@ def control_system(gesture):
     elif gesture == 0:
         print("Decrease System Volume")
         pyautogui.hotkey('volumedown')
-    # elif gesture == 2:
-    #     print("Activate sleep mode")
-    #     pyautogui.hotkey("winleft", "x")
-    #     pyautogui.typewrite("u")
-    #     pyautogui.typewrite("s")
+    elif gesture == 2:
+        print("Activate sleep mode")
+        pyautogui.hotkey("winleft", "x")
+        pyautogui.typewrite("u")
+        pyautogui.typewrite("s")
+    elif gesture == 6:
+        print("Open Task Manager")
+        pyautogui.hotkey("ctrl", "shift", "esc")
