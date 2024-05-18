@@ -45,7 +45,7 @@ def control_youtube(gesture):
         text = speech_to_text()
         print(text)
         if text is None:
-            text_to_speech("Speech recognition failed. Please try again...")
+            text_to_speech("I could't hear what you said. Please try again!")
             print("Speech recognition failed. Please try again...")
         else:
             print("Typing '{}' into the search bar".format(text))

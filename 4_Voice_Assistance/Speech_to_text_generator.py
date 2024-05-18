@@ -3,7 +3,14 @@ import speech_recognition as sr
 def speech_to_text(timeout=5):
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
-        text 
+        print("Listening...")
+        recognizer.adjust_for_ambient_noise(source)
+        try:
+            audio = recognizer.listen(source, timeout=timeout)
+        except sr.WaitTimeoutError:
+            print("Timeout occurred while waiting for speech to start. Please speak louder or move closer to the microphone.")
+            return None
+
     try:
         text = recognizer.recognize_google(audio)
         print("You said:", text)

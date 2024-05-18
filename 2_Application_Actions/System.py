@@ -2,6 +2,10 @@ import pyautogui
 from Utils.Focus_on_window import focus_on_window
 from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 import time
+import sys
+
+sys.path.append('../4_Voice_Assistance/Speech_to_application')
+from Speech_to_app_composer import speech_to_app_composer
 
 """
 Function to control system functionalities
@@ -13,6 +17,7 @@ Gesture Mapping:
 0: Decrease System Volume
 2: Activate sleep mode
 6: Open Task Manager
+7: Trigger speech to application
 """
 def control_system(gesture):
     if gesture == None:
@@ -41,3 +46,7 @@ def control_system(gesture):
     elif gesture == 6:
         print("Open Task Manager")
         pyautogui.hotkey("ctrl", "shift", "esc")
+    elif gesture == 7:
+        print("Trigger speech to application")
+        speech_to_app_composer()
+
