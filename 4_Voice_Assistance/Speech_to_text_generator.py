@@ -1,9 +1,14 @@
 import speech_recognition as sr
+import sys
+
+sys.path.append('../7_Sound_manipulating')
+from Mp3_player import mp3_player
 
 def speech_to_text(timeout=5):
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("Listening...")
+        mp3_player('..\Assets\Sounds\pick_up.mp3')
         recognizer.adjust_for_ambient_noise(source)
         try:
             audio = recognizer.listen(source, timeout=timeout)
@@ -13,6 +18,7 @@ def speech_to_text(timeout=5):
 
     try:
         text = recognizer.recognize_google(audio)
+        mp3_player('..\Assets\Sounds\pick_down.mp3')
         print("You said:", text)
         return text
     except sr.UnknownValueError:
