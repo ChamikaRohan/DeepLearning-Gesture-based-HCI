@@ -45,6 +45,7 @@ def control_youtube(gesture):
         text = speech_to_text()
         print(text)
         if text is None:
+            text_to_speech("Speech recognition failed. Please try again...")
             print("Speech recognition failed. Please try again...")
         else:
             print("Typing '{}' into the search bar".format(text))
@@ -52,14 +53,21 @@ def control_youtube(gesture):
             pyautogui.press('enter')
             time.sleep(2)
     elif gesture == 2:
-        print("Play video")
+        print("Select video")
         pyautogui.click(x=800, y=600)
-        time.sleep(2)
+        time.sleep(1)
     elif gesture == 5:
         print("Activate full-screen mode")
         pyautogui.press('f')
-        time.sleep(2)
-
+        time.sleep(1)
+    elif gesture == 6:
+        print("Play/Pause video")
+        pyautogui.press('space')
+        time.sleep(1)
+    elif gesture == 7:
+        print("Goto homes page")
+        pyautogui.click(x=150, y=190)
+        time.sleep(1)
 
 
 
