@@ -40,6 +40,11 @@ def intended_gesture_map(predicted_class, consecutive_frames):
     else:
         consecutive_frames[7] = 0
 
+    if predicted_class == 8:
+        consecutive_frames[8] += 1
+    else:
+        consecutive_frames[8] = 0
+
     for gesture, count in consecutive_frames.items():
         intended_gesture = None
         for gesture, count in consecutive_frames.items():

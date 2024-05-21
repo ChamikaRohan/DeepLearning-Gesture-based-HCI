@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 import mediapipe as mp
 import os
 
-SAVE_PATH =r'C:\Users\M\Desktop\Images\6\L'
+SAVE_PATH =r'C:\Users\M\Desktop\New folder\10\L'
 
 def predict_gesture(cap, model_path):    # Load the trained model
     model = load_model(model_path)
@@ -81,25 +81,25 @@ def predict_gesture(cap, model_path):    # Load the trained model
                 predicted_probability = predictions[0][predicted_class]
 
                 if predicted_class == 0:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.6:
                         gesture = 0
                     else:
                         gesture = None
 
                 elif predicted_class == 1:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.6:
                         gesture = 1
                     else:
                         gesture = None
 
                 elif predicted_class == 2:
-                    if predicted_probability > 0.8:
+                    if predicted_probability > 0.6:
                         gesture = 2
                     else:
                         gesture = None
 
                 elif predicted_class == 3:
-                    if predicted_probability > 0.9:
+                    if predicted_probability > 0.6:
                         gesture = 3
                     else:
                         gesture = None
@@ -114,13 +114,26 @@ def predict_gesture(cap, model_path):    # Load the trained model
                         gesture = 5
                     else:
                         gesture = None
-
                 elif predicted_class == 6:
                     if predicted_probability > 0.6:
                         gesture = 6
                     else:
                         gesture = None
-
+                elif predicted_class == 7:
+                    if predicted_probability > 0.6:
+                        gesture = 7
+                    else:
+                        gesture = None
+                elif predicted_class == 8:
+                    if predicted_probability > 0.6:
+                        gesture = 8
+                    else:
+                        gesture = None
+                elif predicted_class == 9:
+                    if predicted_probability > 0.6:
+                        gesture = 9
+                    else:
+                        gesture = None
                 yield gesture
 
         cv2.imshow("First frame", first_frame)
@@ -134,7 +147,7 @@ def predict_gesture(cap, model_path):    # Load the trained model
 
 
 cap = cv2.VideoCapture(0)
-model_path = "Media/7_gesture_model_13th_attempt.h5"
+model_path = "Media/10_gesture_model_24th_attempt.h5"
 for gesture in predict_gesture(cap, model_path):
     if gesture is None:
         print("No gesture detected.")

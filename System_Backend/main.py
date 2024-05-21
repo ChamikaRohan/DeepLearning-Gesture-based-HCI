@@ -19,13 +19,13 @@ from Mode_toggler import mode_toggler
 sys.path.append('../6_Settings')
 from Application_settings import ask_for_setting
 
-model_path = "../1_Model_Binding/Media/8_gesture_model_19th_attempt.h5"
+model_path = "../1_Model_Binding/Media/9_gesture_model_23th_attempt.h5"
 cap = cv2.VideoCapture(0)
 first_gray = first_frame_getter(cap)
 
 mode = mode_selector()
 
-consecutive_frames = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6:0, 7: 0}
+consecutive_frames = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6:0, 7: 0, 8: 0}
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture == 's':
         choice = ask_for_setting()

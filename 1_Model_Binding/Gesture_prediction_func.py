@@ -117,6 +117,11 @@ def predict_gesture(cap, model_path, first_gray):
                         gesture = 7
                     else:
                         gesture = None
+                elif predicted_class == 8:
+                    if predicted_probability > 0.6:
+                        gesture = 8
+                    else:
+                        gesture = None
                 yield gesture
 
         cv2.imshow("Frame", frame)
