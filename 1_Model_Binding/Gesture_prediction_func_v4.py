@@ -111,6 +111,23 @@ def predict_gesture(cap, model_path, first_gray):
                         gesture = 6
                     else:
                         gesture = None
+                elif predicted_class == 7:
+                    if predicted_probability > 0.6:
+                        gesture = 7
+                    else:
+                        gesture = None
+
+                elif predicted_class == 8:
+                    if predicted_probability > 0.6:
+                        gesture = 8
+                    else:
+                        gesture = None
+
+                elif predicted_class == 9:
+                    if predicted_probability > 0.6:
+                        gesture = 9
+                    else:
+                        gesture = None
                 yield gesture
 
         cv2.imshow("Frame", frame)
@@ -122,7 +139,7 @@ def predict_gesture(cap, model_path, first_gray):
             gesture = 's'
             yield gesture
 
-"""
+'''
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
@@ -134,5 +151,5 @@ for gesture in predict_gesture(cap, model_path, first_gray):
         
     else:
         print("Predicted Gesture:", gesture)
+'''
 
-"""
