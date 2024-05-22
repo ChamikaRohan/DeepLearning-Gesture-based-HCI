@@ -16,5 +16,10 @@ def URL_origin_finder():
     # Check if the URL contains "youtube.com"
     if "youtube.com" in URL:
         return "youtube"
+    
+    # Check if the URL contains "canva.com"
+    elif "canva.com" in URL:
+        return "canva"
+    
     else:
         return None

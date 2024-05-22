@@ -49,4 +49,9 @@ def control_system(gesture):
     elif gesture == 7:
         print("Trigger speech to application")
         speech_to_app_composer()
-
+    elif gesture == 8:
+        print("Minimize Current Application")
+        pyautogui.hotkey('alt', 'space', 'n')
+    elif gesture == 9:
+        print("Close Current Application")
+        pyautogui.hotkey('alt', 'f4')

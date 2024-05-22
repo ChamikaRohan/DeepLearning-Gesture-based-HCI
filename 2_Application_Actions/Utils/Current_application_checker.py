@@ -38,12 +38,18 @@ def get_active_application():
             elif process_name == 'POWERPNT.EXE':
                 application = 3
                 break;
-            elif process_name == 'msedge.exe':
+            elif process_name == 'msedge.exe' or process_name == 'WINWORD.EXE':
                 application = 2
                 break;
             elif process_name == 'chrome.exe':
                 if URL_origin_finder() == 'youtube':
                     application = 4
+                    break;
+                elif URL_origin_finder() == 'canva':
+                    application = 3
+                    break;
+                else:
+                    application = 2
                     break;
             else:
                 application = 1
