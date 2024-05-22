@@ -3,6 +3,11 @@ from Utils.Focus_on_window import focus_on_window
 from Utils.Powerpoint_mode_checker import is_fullscreen_mode
 import time
 
+import sys
+
+sys.path.append('../4_Voice_Assistance/Speech_to_read_control/Comment_control')
+from Speech_to_comment_composer import speech_to_comment_composer
+
 """
 Function to control reading and browsing functionalities
 
@@ -12,6 +17,7 @@ Gesture Mapping:
 3: Zooming in
 2: Zooming out
 5: Toggle Full-Screen Mode
+7: Add a comment
 """
 def control_reading(gesture):
     #Find and activae the movie player window
@@ -39,6 +45,10 @@ def control_reading(gesture):
     elif gesture == 5:
         print("Toggling Full-Screen Mode")
         pyautogui.hotkey("f11")
+    elif gesture == 7:
+        print("Adding a comment")
+        speech_to_comment_composer();
+
 
 
 

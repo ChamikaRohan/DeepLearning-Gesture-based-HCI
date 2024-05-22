@@ -5,12 +5,14 @@ def specific_words_finder(input_string, specific_words):
     return False
 
 """
-input_string = "I am using Microsoft Word to write this document."
-specific_words = ["Microsoft Word", "Google Docs", "LibreOffice"]
+input_string = "I am using Microsoft center Word to write this document."
+specific_words = ["Center"]
 
-print(contains_specific_words(input_string, specific_words))  # Output: True
+print(specific_words_finder(input_string, specific_words))  # Output: True
 
 input_string = "I am using Notepad to write this document."
-print(contains_specific_words(input_string, specific_words))  # Output: False
+print(specific_words_finder(input_string, specific_words))  # Output: False
 """
+
+
 
