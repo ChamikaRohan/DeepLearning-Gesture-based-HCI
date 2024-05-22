@@ -8,4 +8,5 @@ Gesture names and numbers map
     5: 'Gesture |_',
     6: 'Gesture swag',
     7: 'Gesture 0',
+    8: 'Gesture |||'
 }
