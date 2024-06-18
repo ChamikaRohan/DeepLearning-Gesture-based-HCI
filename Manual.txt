@@ -1,12 +1,13 @@
 Gesture names and numbers map
 {
-    0: 'Gesture palm',
-    1: 'Gesture thumbs up',
-    2: 'Gesture rock',
-    3: 'Gesture thumbs left',
+    0: 'Gesture Palm',
+    1: 'Gesture Thumbs Up',
+    2: 'Gesture Rock',
+    3: 'Gesture Thumbs Left',
     4: 'Gesture V',
-    5: 'Gesture |_',
-    6: 'Gesture swag',
-    7: 'Gesture 0',
-    8: 'Gesture |||'
+    5: 'Gesture L',
+    6: 'Gesture Swag',
+    7: 'Gesture C',
+    8: 'Gesture Three Fingers',
+    9: 'Gesture Scissor'
 }
