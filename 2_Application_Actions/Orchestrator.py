@@ -20,9 +20,10 @@ def select_function(argument, gestures):
         3: control_reading,
         4: control_presentation,
         5: control_youtube,
-        6: default_function,
-        7: control_zoom,
-        8: default_function
+        6: control_zoom,
+        7: default_function,
+        8: default_function,
+        9: default_function
     }
     # Get the function from switcher dictionary
     func = switcher.get(argument, default_function)
@@ -45,7 +46,7 @@ def orchestrator(gesture):
                     state = True
                     action = memory
                     print("Successfully switched to to application "+ str(action))
-                    select_function(action, gesture  )
+                    select_function(action, gesture)
                     speak_application(action)
                 else:
                     if gesture != 1:

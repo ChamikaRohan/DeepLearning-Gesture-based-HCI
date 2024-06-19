@@ -21,7 +21,8 @@ def select_function(argument, gestures):
         5: control_zoom,
         6: default_function,
         7: default_function,
-        8: default_function
+        8: default_function,
+        9: default_function
     }
     # Get the function from switcher dictionary
     func = switcher.get(argument, default_function)
