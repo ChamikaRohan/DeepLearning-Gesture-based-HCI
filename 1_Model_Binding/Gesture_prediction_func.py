@@ -140,7 +140,7 @@ def predict_gesture(cap, model_path, first_gray):
             yield gesture
 
 
-
+"""
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
@@ -151,6 +151,6 @@ for gesture in predict_gesture(cap, model_path, first_gray):
     else:
         print("Predicted Gesture:", gesture)
 
-
+"""
 
 

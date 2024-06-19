@@ -32,6 +32,7 @@ def get_active_application():
         active_pid = get_active_window_pid()
         if active_pid:
             process_name = get_process_name(active_pid)
+            print(process_name)
             if process_name == 'vlc.exe' or process_name == 'ApplicationFrameHost.exe':
                 application = 0
                 break;
@@ -45,6 +46,9 @@ def get_active_application():
                 if URL_origin_finder() == 'youtube':
                     application = 4
                     break;
+            elif process_name == 'Zoom.exe':
+                application = 5
+                break;
             else:
                 application = 1
                 break;

@@ -5,6 +5,7 @@ from Presentation import control_presentation
 from System import control_system
 from Reading import control_reading
 from Youtube import control_youtube
+from Zoom import control_zoom
 import sys
 
 sys.path.append('../2_Application_Actions/Utils')
@@ -17,7 +18,7 @@ def select_function(argument, gestures):
         2: control_reading,
         3: control_presentation,
         4: control_youtube,
-        5: default_function,
+        5: control_zoom,
         6: default_function,
         7: default_function,
         8: default_function

@@ -4,6 +4,7 @@ from Presentation import control_presentation
 from System import control_system
 from Reading import control_reading
 from Youtube import control_youtube
+from Zoom import control_zoom
 
 sys.path.append('../4_Voice_Assistance')
 from Switched_application_notifyer import speak_application
@@ -20,7 +21,7 @@ def select_function(argument, gestures):
         4: control_presentation,
         5: control_youtube,
         6: default_function,
-        7: default_function,
+        7: control_zoom,
         8: default_function
     }
     # Get the function from switcher dictionary
