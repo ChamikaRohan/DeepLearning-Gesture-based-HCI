@@ -7,7 +7,7 @@ import mediapipe as mp
 
 from Utils.First_frame_getter import first_frame_getter
 
-from Utils.Noise_finder import is_noisy
+from Utils.Auto_first_frame_setter import auto_first_frame_setter
 
 sys.path.append('../User_Interface')
 from Window_pinner import window_pinner
@@ -130,10 +130,10 @@ def predict_gesture(cap, model_path, first_gray):
                     else:
                         gesture = None
                 yield gesture
-
-        if is_noisy(difference):
-            print("Web-cam feed has noise!, resetting first frame automatically.")
-            first_gray = first_frame_getter(cap)
+        else:
+            if auto_first_frame_setter(difference):
+                print("Web-cam feed has noise!, resetting first frame automatically.")
+                first_gray = first_frame_getter(cap)
 
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
@@ -149,13 +149,13 @@ def predict_gesture(cap, model_path, first_gray):
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
-model_path = "Media/8_gesture_model_19th_attempt.h5"
+model_path = "Media/10_gesture_model_25th_attempt.h5"
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture is None:
         print("No gesture detected.")
     else:
         print("Predicted Gesture:", gesture)
-
 """
+
 
 
