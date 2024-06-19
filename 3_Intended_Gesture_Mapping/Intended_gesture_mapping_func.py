@@ -45,6 +45,11 @@ def intended_gesture_map(predicted_class, consecutive_frames):
     else:
         consecutive_frames[8] = 0
 
+    if predicted_class == 9:
+        consecutive_frames[9] += 1
+    else:
+        consecutive_frames[9] = 0
+
     for gesture, count in consecutive_frames.items():
         intended_gesture = None
         for gesture, count in consecutive_frames.items():

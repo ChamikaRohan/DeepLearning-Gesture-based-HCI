@@ -145,17 +145,17 @@ def predict_gesture(cap, model_path, first_gray):
             yield gesture
 
 
-"""
+
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
-model_path = "Media/8_gesture_model_19th_attempt.h5"
+model_path = "Media/10_gesture_model_25th_attempt.h5"
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture is None:
         print("No gesture detected.")
     else:
         print("Predicted Gesture:", gesture)
 
-"""
+
 
 
