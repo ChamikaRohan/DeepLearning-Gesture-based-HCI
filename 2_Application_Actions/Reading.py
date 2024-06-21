@@ -47,7 +47,7 @@ def control_reading(gesture):
         pyautogui.hotkey("f11")
     elif gesture == 7:
         print("Adding a comment")
-        speech_to_comment_composer();
+        speech_to_comment_composer()
 
 
 

@@ -9,7 +9,7 @@ Gesture Mapping:
 Gesture 0: Play/Stop the movie
 Gesture 4: Volume Increased
 Gesture 2: Volume Decreased
-Gesture 3: Switch to full-screen mode
+Gesture 3: Switch/exit full-screen mode
 Gesture 6: Seek forward
 Gesture 7: Seek backward
 Gesture 5: Take a screenshot
@@ -33,7 +33,7 @@ def control_media_player(gesture):
         print("Volume Decreased")
     elif gesture == 3:
         pyautogui.press("f")
-        print("Switch to full-screen mode")
+        print("Switch/exit full-screen mode")
         time.sleep(1)
     elif gesture == 6:
         pyautogui.keyDown('ctrl')
