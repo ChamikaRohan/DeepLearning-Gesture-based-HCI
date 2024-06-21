@@ -29,11 +29,13 @@ def control_youtube(gesture):
         return
     elif gesture == 4:
         print("Scrolling down")
+        pyautogui.click(x=0, y=700)
         pyautogui.scroll(-80)
         for _ in range(10):
             pyautogui.scroll(-50)
     elif gesture == 0:
         print("Scrolling up")
+        pyautogui.click(x=0, y=700)
         pyautogui.scroll(80)
         for _ in range(10):
             pyautogui.scroll(50)
@@ -58,10 +60,12 @@ def control_youtube(gesture):
         time.sleep(1)
     elif gesture == 5:
         print("Activate full-screen mode")
+        pyautogui.click(x=0, y=600)
         pyautogui.press('f')
         time.sleep(1)
     elif gesture == 6:
         print("Play/Pause video")
+        pyautogui.click(x=0, y=600)
         pyautogui.press('space')
         time.sleep(1)
     elif gesture == 7:
