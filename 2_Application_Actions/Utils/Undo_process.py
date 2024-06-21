@@ -1,6 +1,4 @@
 import pyautogui
-import time
-from Powerpoint_mode_checker import is_fullscreen_mode
 
 def undo_application(side_effected_gesture, application):
     if application == 0:

@@ -66,7 +66,7 @@ def control_youtube(gesture):
         time.sleep(1)
     elif gesture == 7:
         print("Goto homes page")
-        pyautogui.click(x=150, y=190)
+        pyautogui.click(x=215, y=190)
         time.sleep(1)
 
 

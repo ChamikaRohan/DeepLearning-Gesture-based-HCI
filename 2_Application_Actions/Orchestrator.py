@@ -6,6 +6,8 @@ from Reading import control_reading
 from Youtube import control_youtube
 from Zoom import control_zoom
 
+from Utils.Undo_process import undo_application
+
 sys.path.append('../4_Voice_Assistance')
 from Switched_application_notifyer import speak_application
 
@@ -66,6 +68,7 @@ def orchestrator(gesture):
             select_function(action, gesture)
             if gesture ==1:
                 if memory is not None:
+                    undo_application(memory, action)
                     state = False
                     orchestrator(gesture)
                     print("Switching to new application...........")
