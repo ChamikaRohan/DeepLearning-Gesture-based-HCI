@@ -19,7 +19,7 @@ from Mode_toggler import mode_toggler
 sys.path.append('../6_Settings')
 from Application_settings import ask_for_setting
 
-model_path = "../1_Model_Binding/Media/9_gesture_model_23th_attempt.h5"
+model_path = "../1_Model_Binding/Media/10_gesture_model_25th_attempt.h5"
 cap = cv2.VideoCapture(0)
 first_gray = first_frame_getter(cap)
 

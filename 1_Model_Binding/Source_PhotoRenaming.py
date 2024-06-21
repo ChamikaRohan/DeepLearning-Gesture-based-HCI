@@ -40,7 +40,7 @@ def rename_files(directory):
     print("All files renamed successfully!")
 
 # Replace 'your_directory_path' with the path to your directory containing the images
-directory_path = r'C:\Users\M\Desktop\train\train\5'
+directory_path = r'C:\Users\chiara\Documents\FINAL YEAR\FYP\dataset\10 gestures\train\train\9'
 
 # Call the function to rename files in the specified directory
 rename_files(directory_path)

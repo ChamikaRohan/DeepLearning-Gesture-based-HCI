@@ -50,7 +50,7 @@ def predict_gesture(cap, model_path, first_gray):
                         y_max = y
 
                 # Crop hand region from the difference frame with some padding
-                padding = 30  # Adjust the padding as needed
+                padding = 60  # Adjust the padding as needed
                 hand_crop = difference[max(0, y_min - padding):min(y_max + 10, difference.shape[0]),
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
                 cv2.imshow("Hand Crop", hand_crop)
@@ -141,17 +141,17 @@ def predict_gesture(cap, model_path, first_gray):
             yield gesture
 
 
-'''
+
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
-model_path = "Media/9_gesture_model_23th_attempt.h5"
+model_path = "Media/10_gesture_model_25th_attempt.h5"
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture is None:
         print("No gesture detected.")
     else:
         print("Predicted Gesture:", gesture)
-'''
+
 
 
 

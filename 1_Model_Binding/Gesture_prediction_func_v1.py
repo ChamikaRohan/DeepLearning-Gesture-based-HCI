@@ -107,3 +107,5 @@ def predict_gesture(cap, model_path):
             break
     cap.release()
     cv2.destroyAllWindows()
+
+

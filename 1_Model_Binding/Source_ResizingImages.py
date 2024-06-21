@@ -23,7 +23,7 @@ def resize_images_in_directory(directory, new_width, new_height):
     print("All files resized successfully!")
 
 # Example usage:
-input_directory = r'C:\Users\chiara\Documents\FINAL YEAR\FYP\dataset\9 gesture\3 finger\train\train\8'
+input_directory = r'C:\Users\chiara\Documents\FINAL YEAR\FYP\dataset\10 gestures modified\test\test\9'
 new_width = 75
 new_height = 75
 resize_images_in_directory(input_directory, new_width, new_height)

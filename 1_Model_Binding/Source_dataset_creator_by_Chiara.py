@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 import mediapipe as mp
 import os
 
-SAVE_PATH =r'C:\Users\M\Desktop\Images\6\L'
+SAVE_PATH =r'C:\Users\chiara\Documents\FINAL YEAR\FYP\dataset\10 gestures\R       '
 
 def predict_gesture(cap, model_path):    # Load the trained model
     model = load_model(model_path)
@@ -134,7 +134,7 @@ def predict_gesture(cap, model_path):    # Load the trained model
 
 
 cap = cv2.VideoCapture(0)
-model_path = "Media/7_gesture_model_13th_attempt.h5"
+model_path = "Media/8_gesture_model_19th_attempt.h5"
 for gesture in predict_gesture(cap, model_path):
     if gesture is None:
         print("No gesture detected.")
