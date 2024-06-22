@@ -11,6 +11,8 @@ def load_gesture_map(file_path):
     return custom_config
 
 
+
+
 """
 # Example usage: Load gesture_map from a file
 folder_path = r'C:\\Users\M\Desktop\TestAppName'

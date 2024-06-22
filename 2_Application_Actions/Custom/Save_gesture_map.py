@@ -7,7 +7,9 @@ Function to save custom gesture map as JSON file local storage
 def save_gesture_map(file_path, gesture_map):
     with open(file_path, 'w') as f:
         json.dump(gesture_map, f, indent=4)
-    print(f"Custom gesture map successfully saved to {file_path}")
+    print(f"Custom configurations successfully saved to {file_path}")
+
+
 
 
 """
