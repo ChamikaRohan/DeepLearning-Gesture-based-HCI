@@ -15,7 +15,7 @@ Gesture 7: Seek backward
 Gesture 5: Take a screenshot
 """
 def control_media_player(gesture):
-    #Find and activae the movie player window
+    #Find and activate the movie player window
     window_titles = ["Movies", "VLC media player"]
     for title in window_titles:
         focus_on_window(title)

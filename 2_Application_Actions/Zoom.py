@@ -14,7 +14,7 @@ Gesture 7: Start/Stop Video
 
 """
 def control_zoom(gesture):
-    #Find and activae the movie player window
+    #Find and activate the movie player window
     window_titles = ["Zoom Meeting"]
     for title in window_titles:
         focus_on_window(title)

@@ -13,7 +13,7 @@ Gesture Mapping:
 5: Exit slide show mode
 """
 def control_presentation(gesture):
-    #Find and activae the presentation window
+    #Find and activate the presentation window
     window_titles = ["PowerPoint"]
     for title in window_titles:
         focus_on_window(title)

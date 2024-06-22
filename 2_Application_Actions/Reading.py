@@ -20,7 +20,7 @@ Gesture Mapping:
 7: Add a comment
 """
 def control_reading(gesture):
-    #Find and activae the movie player window
+    #Find and activate the movie player window
     window_titles =  [" - Microsoft​ Edge"]
     for title in window_titles:
         focus_on_window(title)

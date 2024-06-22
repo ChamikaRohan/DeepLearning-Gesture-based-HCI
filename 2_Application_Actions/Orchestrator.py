@@ -5,6 +5,7 @@ from System import control_system
 from Reading import control_reading
 from Youtube import control_youtube
 from Zoom import control_zoom
+from Custom_application import control_custom_application
 
 from Utils.Undo_process import undo_application
 
@@ -23,7 +24,7 @@ def select_function(argument, gestures):
         4: control_presentation,
         5: control_youtube,
         6: control_zoom,
-        7: default_function,
+        7: control_custom_application,
         8: default_function,
         9: default_function
     }

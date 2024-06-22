@@ -21,7 +21,7 @@ Gesture Mapping:
 2: Zooming out
 """
 def control_youtube(gesture):
-    #Find and activae the YouTube-Google Chrome window
+    #Find and activate the YouTube-Google Chrome window
     window_titles = ["YouTube - Google Chrome"]
     for title in window_titles:
         focus_on_window(title)

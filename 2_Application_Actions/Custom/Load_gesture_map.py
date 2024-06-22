@@ -6,9 +6,9 @@ Function to load gesture_map from JSON file
 """
 def load_gesture_map(file_path):
     with open(file_path, 'r') as f:
-        gesture_map = json.load(f)
-    print("Loaded custom gesture map: ", gesture_map)
-    return gesture_map
+        custom_config = json.load(f)
+    print("Loaded custom configurations: ", custom_config)
+    return custom_config
 
 
 """
