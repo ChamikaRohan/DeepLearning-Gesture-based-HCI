@@ -144,7 +144,6 @@ def predict_gesture(cap, model_path, first_gray):
             gesture = 's'
             yield gesture
 
-
 """
 cap = cv2.VideoCapture(0)
 update_first_frame = False
