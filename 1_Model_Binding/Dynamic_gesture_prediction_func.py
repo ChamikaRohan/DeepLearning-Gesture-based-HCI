@@ -15,9 +15,6 @@ from Window_pinner import window_pinner
 sys.path.append('../1_Model_Binding')
 from Utils.First_frame_getter import first_frame_getter
 
-sys.path.append('../8_Dynamic_gesture_recognition')
-from Source_v1_Four_direction_moving_recognition import dynamic_action_finder
-
 
 import cv2
 import numpy as np
@@ -121,8 +118,6 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
         if cv2.waitKey(1) & 0xFF == ord('s'):
             gesture = 's'
             yield gesture, "Static"
-
-
 
 """
 cap = cv2.VideoCapture(0)
