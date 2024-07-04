@@ -3,6 +3,7 @@ import time
 import sys
 
 from Application_Actions.MediaPlayer_dynamic import dynamic_control_media_player
+from Application_Actions.Presentation_dynamic import dynamic_control_presentation
 
 sys.path.append('../2_Application_Actions/Utils')
 from Current_application_checker import get_active_application
@@ -12,7 +13,7 @@ def dynamic_select_function(argument, gestures):
         0: dynamic_control_media_player,
         1: dynamic_default_function,
         2: dynamic_default_function,
-        3: dynamic_default_function,
+        3: dynamic_control_presentation,
         4: dynamic_default_function,
         5: dynamic_default_function,
         6: dynamic_default_function,

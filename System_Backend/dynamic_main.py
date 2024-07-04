@@ -50,7 +50,7 @@ for gesture,direction in predict_gesture_and_direction(cap, model_path, first_gr
         print("Intended Gesture:", intended_gesture)
         print("Intended Direction:", intended_direction)
         intended_combined_gesture = combined_gesture_number_finder(intended_gesture, intended_direction)
-
+        print(intended_combined_gesture)
         if gesture_type == 1:
             engine(mode, intended_combined_gesture)
         elif gesture_type == 2:

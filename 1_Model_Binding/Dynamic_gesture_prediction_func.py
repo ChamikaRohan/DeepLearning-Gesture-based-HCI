@@ -9,12 +9,16 @@ from Utils.First_frame_getter import first_frame_getter
 
 from Utils.Auto_first_frame_setter import auto_first_frame_setter
 
+from collections import deque
+
 sys.path.append('../User_Interface')
 from Window_pinner import window_pinner
 
 sys.path.append('../1_Model_Binding')
 from Utils.First_frame_getter import first_frame_getter
 
+sys.path.append('../3_Intended_Gesture_Mapping')
+from dynamic_intended_gesture_mapping_func import intended_gesture_and_direction_map
 
 import cv2
 import numpy as np
@@ -26,7 +30,8 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
 
     # Initialize MediaPipe Hands
     mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.7)
+    #hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.7)
+    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.6, min_tracking_confidence=0.8)
     mp_drawing = mp.solutions.drawing_utils
 
     gesture = None
@@ -99,7 +104,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
                         else:
                             direction = "Up"
 
-                    if abs(dx) > 0.03 or abs(dy) > 0.03:
+                    if abs(dx) > 0.001 or abs(dy) > 0.001:
                         moving = True
                         direction = direction
                     else:
@@ -119,6 +124,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
             gesture = 's'
             yield gesture, "Static"
 
+
 """
 cap = cv2.VideoCapture(0)
 update_first_frame = False
@@ -128,9 +134,9 @@ for gesture, direction in predict_gesture_and_direction(cap, model_path, first_g
     if gesture is None:
         print("No gesture detected.")
     else:
-        print("Predicted Gesture:", gesture)
+        print("Predicted Ges3ure:", gesture)
         print("Predicted Direction:", direction)
-        intended_gesture, intended_direction = intended_gesture_and_direction_map(predicted_class, predicted_direction, gesture_frames, direction_frames)
+        # intended_gesture, intended_direction = dynamic_intended_gesture_mapping_func(predicted_class, predicted_direction, gesture_frames, direction_frames)
 
 """
 
