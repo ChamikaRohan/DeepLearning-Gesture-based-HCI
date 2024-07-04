@@ -25,6 +25,8 @@ from Application_settings import ask_for_setting
 sys.path.append('../8_Dynamic_gesture_recognition')
 from Gesture_type_selector import gesture_type_selector
 
+from Dynamic_mode_engine import dynamic_engine
+
 from collections import deque
 
 model_path = "../1_Model_Binding/Media/10_gesture_model_25th_attempt.h5"
@@ -52,8 +54,7 @@ for gesture,direction in predict_gesture_and_direction(cap, model_path, first_gr
         if gesture_type == 1:
             engine(mode, intended_combined_gesture)
         elif gesture_type == 2:
-            #dynamic
-            print("Empty")
+            dynamic_engine(mode, intended_combined_gesture)
 
 
 
