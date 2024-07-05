@@ -5,6 +5,7 @@ import sys
 from Application_Actions.MediaPlayer_dynamic import dynamic_control_media_player
 from Application_Actions.Presentation_dynamic import dynamic_control_presentation
 from Application_Actions.Reading_dynamic import dynamic_control_reading
+from Application_Actions.Zoom_dynamic import dynamic_control_zoom
 
 sys.path.append('../2_Application_Actions/Utils')
 from Current_application_checker import get_active_application
@@ -16,7 +17,7 @@ def dynamic_select_function(argument, gestures):
         2: dynamic_control_reading,
         3: dynamic_control_presentation,
         4: dynamic_default_function,
-        5: dynamic_default_function,
+        5: dynamic_control_zoom,
         6: dynamic_default_function,
         7: dynamic_default_function,
         8: dynamic_default_function,

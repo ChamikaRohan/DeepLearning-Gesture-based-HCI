@@ -1,5 +1,5 @@
 import pyautogui
-
+import time
 import sys
 
 sys.path.append('../4_Voice_Assistance/Speech_to_read_control/Comment_control')
@@ -36,16 +36,19 @@ def dynamic_control_reading(gesture):
         pyautogui.scroll(80)
         for _ in range(10):
             pyautogui.scroll(50)
-    elif gesture == 19:
+    elif gesture == 23:
         print("Zooming in")
         pyautogui.hotkey("ctrl", "+")
-    elif gesture == 18:
+        time.sleep(0.5)
+    elif gesture == 22:
         print("Zooming out")
         pyautogui.hotkey("ctrl", "_")
+        time.sleep(0.5)
     elif gesture == 20:
         print("Toggling Full-Screen Mode")
         pyautogui.hotkey("f11")
-    elif gesture == 7:
+        time.sleep(1)
+    elif gesture == 40 or gesture == 41:
         print("Adding a comment")
         speech_to_comment_composer()
 

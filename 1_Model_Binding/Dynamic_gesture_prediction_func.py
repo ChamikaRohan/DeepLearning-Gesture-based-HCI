@@ -104,7 +104,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
                         else:
                             direction = "Up"
 
-                    if abs(dx) > 0.007 or abs(dy) > 0.007:
+                    if abs(dx) > 0.01 or abs(dy) > 0.01:
                         moving = True
                         direction = direction
                     else:
@@ -117,12 +117,14 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
 
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
+        window_pinner("Hand Crop")
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
         if cv2.waitKey(1) & 0xFF == ord('s'):
             gesture = 's'
             yield gesture, "Static"
+
 
 
 """
@@ -137,7 +139,6 @@ for gesture, direction in predict_gesture_and_direction(cap, model_path, first_g
         print("Predicted Ges3ure:", gesture)
         print("Predicted Direction:", direction)
         # intended_gesture, intended_direction = dynamic_intended_gesture_mapping_func(predicted_class, predicted_direction, gesture_frames, direction_frames)
-
 """
 
 
