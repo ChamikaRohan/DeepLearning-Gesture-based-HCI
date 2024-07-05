@@ -104,7 +104,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
                         else:
                             direction = "Up"
 
-                    if abs(dx) > 0.001 or abs(dy) > 0.001:
+                    if abs(dx) > 0.007 or abs(dy) > 0.007:
                         moving = True
                         direction = direction
                     else:

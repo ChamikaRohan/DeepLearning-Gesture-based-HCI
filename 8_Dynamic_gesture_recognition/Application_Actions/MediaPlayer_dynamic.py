@@ -25,7 +25,7 @@ def dynamic_control_media_player(gesture):
         focus_on_window(title)
     if gesture == None:
         return
-    elif gesture == 13:
+    elif gesture == 21:
         pyautogui.press("space")
         print("Play/Stop the movie")
         time.sleep(1)
@@ -35,16 +35,16 @@ def dynamic_control_media_player(gesture):
     elif gesture == 29:
         pyautogui.scroll(-1)
         print("Volume Decreased")
-    elif gesture == 12:
+    elif gesture == 20:
         pyautogui.press("f")
         print("Switch/exit full-screen mode")
         time.sleep(1)
-    elif gesture == 23:
+    elif gesture == 19:
         pyautogui.keyDown('ctrl')
         pyautogui.press('right')
         pyautogui.keyUp('ctrl')
         print("Seeking Forward")
-    elif gesture == 22:
+    elif gesture == 18:
         pyautogui.keyDown('ctrl')
         pyautogui.press('left')
         pyautogui.keyUp('ctrl')
