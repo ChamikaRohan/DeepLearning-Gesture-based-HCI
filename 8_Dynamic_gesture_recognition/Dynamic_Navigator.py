@@ -7,6 +7,7 @@ from Application_Actions.Presentation_dynamic import dynamic_control_presentatio
 from Application_Actions.Reading_dynamic import dynamic_control_reading
 from Application_Actions.Zoom_dynamic import dynamic_control_zoom
 from Application_Actions.Youtube_dynamic import dynamic_control_youtube
+from Application_Actions.System_dynamic import dynamic_control_system
 
 sys.path.append('../2_Application_Actions/Utils')
 from Current_application_checker import get_active_application
@@ -14,7 +15,7 @@ from Current_application_checker import get_active_application
 def dynamic_select_function(argument, gestures):
     switcher = {
         0: dynamic_control_media_player,
-        1: dynamic_default_function,
+        1: dynamic_control_system,
         2: dynamic_control_reading,
         3: dynamic_control_presentation,
         4: dynamic_control_youtube,
