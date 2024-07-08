@@ -21,11 +21,11 @@ def dynamic_control_presentation(gesture):
         focus_on_window(title)
     if gesture == None:
         return
-    elif gesture == 20:
+    elif gesture == 32 or gesture == 33:
         print("Slide Show Mode On")
         pyautogui.press("f5")
         time.sleep(1)
-    elif gesture == 21:
+    elif gesture == 21 or gesture == 20:
         print("Slide Show Mode Off")
         pyautogui.press("esc")
     elif gesture == 19:
