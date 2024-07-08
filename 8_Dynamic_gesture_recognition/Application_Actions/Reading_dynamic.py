@@ -44,11 +44,11 @@ def dynamic_control_reading(gesture):
         print("Zooming out")
         pyautogui.hotkey("ctrl", "_")
         time.sleep(0.5)
-    elif gesture == 20:
+    elif gesture == 32 or gesture == 33:
         print("Toggling Full-Screen Mode")
         pyautogui.hotkey("f11")
         time.sleep(1)
-    elif gesture == 40 or gesture == 41:
+    elif gesture == 40 or gesture == 41 or gesture == 38 or gesture == 39:
         print("Adding a comment")
         speech_to_comment_composer()
 
