@@ -39,7 +39,7 @@ mode = mode_selector()
 gesture_frames = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
 direction_frames = deque()
 
-for gesture,direction in predict_gesture_and_direction(cap, model_path, first_gray):
+for gesture,direction in predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
     if gesture == 's':
         choice = ask_for_setting()
         if choice == 1:

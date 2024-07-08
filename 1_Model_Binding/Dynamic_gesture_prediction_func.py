@@ -25,7 +25,7 @@ import numpy as np
 import mediapipe as mp
 from tensorflow.keras.models import load_model
 
-def predict_gesture_and_direction(cap, model_path, first_gray):
+def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
     model = load_model(model_path)
 
     # Initialize MediaPipe Hands
@@ -104,7 +104,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
                         else:
                             direction = "Up"
 
-                    if abs(dx) > 0.01 or abs(dy) > 0.01:
+                    if abs(dx) > 0.04 or abs(dy) > 0.04:
                         moving = True
                         direction = direction
                     else:
@@ -112,8 +112,10 @@ def predict_gesture_and_direction(cap, model_path, first_gray):
 
                 prev_landmarks = hand_landmarks.landmark
                 mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
-            yield gesture, direction
+            if gesture_type == 1:
+                yield gesture
+            else:
+                yield gesture, direction
 
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
