@@ -31,7 +31,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
     # Initialize MediaPipe Hands
     mp_hands = mp.solutions.hands
     #hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5, min_tracking_confidence=0.7)
-    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.6, min_tracking_confidence=0.8)
+    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.1, min_tracking_confidence=0.1)
     mp_drawing = mp.solutions.drawing_utils
 
     gesture = None
@@ -104,8 +104,7 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
                         else:
                             direction = "Up"
 
-                    if abs(dx) > 0.04 or abs(dy) > 0.04:
-                        moving = True
+                    if abs(dx) > 0.02 or abs(dy) > 0.04:
                         direction = direction
                     else:
                         direction = "Static"
@@ -117,6 +116,11 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
             else:
                 yield gesture, direction
 
+        # else:
+        #     if auto_first_frame_setter(difference):
+        #         print("Web-cam feed has noise!, resetting first frame automatically.")
+        #         first_gray = first_frame_getter(cap)
+
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)
         window_pinner("Hand Crop")
@@ -127,20 +131,19 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
             gesture = 's'
             yield gesture, "Static"
 
-
-
 """
 cap = cv2.VideoCapture(0)
 update_first_frame = False
 first_gray = first_frame_getter(cap)
 model_path = "Media/10_gesture_model_25th_attempt.h5"
-for gesture, direction in predict_gesture_and_direction(cap, model_path, first_gray):
+for gesture, direction in predict_gesture_and_direction(cap, model_path, first_gray, 2):
     if gesture is None:
         print("No gesture detected.")
     else:
         print("Predicted Ges3ure:", gesture)
         print("Predicted Direction:", direction)
         # intended_gesture, intended_direction = dynamic_intended_gesture_mapping_func(predicted_class, predicted_direction, gesture_frames, direction_frames)
+
 """
 
 

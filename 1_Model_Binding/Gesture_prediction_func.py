@@ -130,10 +130,10 @@ def predict_gesture(cap, model_path, first_gray):
                     else:
                         gesture = None
                 yield gesture
-        else:
-            if auto_first_frame_setter(difference):
-                print("Web-cam feed has noise!, resetting first frame automatically.")
-                first_gray = first_frame_getter(cap)
+        # else:
+        #     if auto_first_frame_setter(difference):
+        #         print("Web-cam feed has noise!, resetting first frame automatically.")
+        #         first_gray = first_frame_getter(cap)
 
         cv2.imshow("Frame", frame)
         cv2.imshow("Difference", difference)

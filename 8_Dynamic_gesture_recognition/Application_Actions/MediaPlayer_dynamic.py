@@ -41,12 +41,12 @@ def dynamic_control_media_player(gesture):
         pyautogui.press("f")
         print("Switch/exit full-screen mode")
         time.sleep(1)
-    elif gesture == 19:
+    elif gesture == 22:
         pyautogui.keyDown('ctrl')
         pyautogui.press('right')
         pyautogui.keyUp('ctrl')
         print("Seeking Forward")
-    elif gesture == 18:
+    elif gesture == 23:
         pyautogui.keyDown('ctrl')
         pyautogui.press('left')
         pyautogui.keyUp('ctrl')
