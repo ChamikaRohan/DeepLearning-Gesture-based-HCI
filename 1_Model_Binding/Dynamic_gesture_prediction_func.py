@@ -143,7 +143,6 @@ for gesture, direction in predict_gesture_and_direction(cap, model_path, first_g
         print("Predicted Ges3ure:", gesture)
         print("Predicted Direction:", direction)
         # intended_gesture, intended_direction = dynamic_intended_gesture_mapping_func(predicted_class, predicted_direction, gesture_frames, direction_frames)
-
 """
 
 

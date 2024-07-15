@@ -28,11 +28,11 @@ def dynamic_control_presentation(gesture):
     elif gesture == 21 or gesture == 20:
         print("Slide Show Mode Off")
         pyautogui.press("esc")
-    elif gesture == 19:
+    elif gesture == 22:
         print("Switch to Next Slide")
         pyautogui.hotkey("right")
         time.sleep(0.5)
-    elif gesture == 18:
+    elif gesture == 23:
         print("Switch to Previous Slide")
         pyautogui.hotkey("left")
         time.sleep(0.5)
