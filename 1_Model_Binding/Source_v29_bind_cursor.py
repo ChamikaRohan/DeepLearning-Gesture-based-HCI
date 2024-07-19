@@ -17,7 +17,7 @@ def move_cursor(x, y):
 
     # Apply smoothing
     smoothed_x = int(prev_x * (1 - SMOOTHING_FACTOR) + scaled_x * SMOOTHING_FACTOR)
-    smoothed_y = int(prev_y * (1 - SMOOTHING_FACTOR) + scaled_y * SMOOTHING_FACTOR)
+    smoothed_y = int(prev_y * (1 - SMOOTHING_FACTOR) + scaled_y * SMOOTHING_FACTOR) - 600
 
     # Move the cursor based on smoothed hand coordinates
     mouse.position = (smoothed_x, smoothed_y)
@@ -39,7 +39,7 @@ def predict_gesture(cap, model_path):
     first_gray = cv2.GaussianBlur(first_gray, (5, 5), 0)
 
     mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5)
+    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.1, min_tracking_confidence=0.1)
 
     while True:
         _, frame = cap.read()
