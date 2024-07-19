@@ -26,6 +26,7 @@ import mediapipe as mp
 from tensorflow.keras.models import load_model
 
 def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
+    print(model_path)
     model = load_model(model_path)
 
     # Initialize MediaPipe Hands

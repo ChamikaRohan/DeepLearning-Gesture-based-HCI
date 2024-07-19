@@ -13,7 +13,7 @@ sys.path.append('../3_Intended_Gesture_Mapping')
 from Intended_gesture_mapping_func import intended_gesture_map
 from dynamic_intended_gesture_mapping_func import intended_gesture_and_direction_map
 
-sys.path.append('../8_Dynamic_gesture_recognition')
+sys.path.append('../8_Dynamic_Gesture_Recognition')
 from Dynamic_gesture_extender import combined_gesture_number_finder
 
 sys.path.append('../5_Mode_Selector')
@@ -24,7 +24,7 @@ from Mode_toggler import mode_toggler
 sys.path.append('../6_Settings')
 from Application_settings import ask_for_setting
 
-sys.path.append('../8_Dynamic_gesture_recognition')
+sys.path.append('../8_Dynamic_Gesture_Recognition')
 from Gesture_type_selector import gesture_type_selector
 
 from Dynamic_mode_engine import dynamic_engine
