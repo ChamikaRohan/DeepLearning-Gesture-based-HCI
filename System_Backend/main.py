@@ -34,7 +34,7 @@ from flask_server import run_flask_server
 
 sys.path.append('../10_Storage_and_utils')
 from Payload import Payload
-from Mode_changer import mode_changer
+from Settings_changer import settings_changer
 
 from collections import deque
 
@@ -52,25 +52,20 @@ def initiate_payload():
 
 def dynamic_main():
     payload = initiate_payload()
-    if payload.get_gesture_type() == 1:
-        for gesture in predict_gesture(cap, payload.get_model_path(), payload.get_first_gray()):
-            if gesture == 's':
-                choice = ask_for_setting()
-                if choice == 1:
-                    payload.set_mode(mode_toggler(payload.get_mode()))
-            else:
+    while True:
+        if payload.get_gesture_type() == 1:
+            for gesture in predict_gesture(cap, payload.get_model_path(), payload.get_first_gray()):
                 print("Predicted Gesture:", gesture)
                 intended_gesture = intended_gesture_map(gesture, payload.get_gesture_frames())
                 print("Intended Gesture:", intended_gesture)
                 engine(payload.get_mode(), intended_gesture)
-    else:
-        for gesture, direction in predict_gesture_and_direction(cap, payload.get_model_path(), payload.get_first_gray(), payload.get_gesture_type()):
-            if gesture == 's':
-                choice = ask_for_setting()
-                if choice == 1:
-                    payload.set_mode(mode_toggler(payload.get_mode()))
-            else:
-                # print("Predicted Gesture:", gesture)
+                if payload.get_gesture_type() != 1:
+                    print("changed to type", payload.get_gesture_type())
+                    break
+        else:
+            for gesture, direction in predict_gesture_and_direction(cap, payload.get_model_path(),
+                                                                    payload.get_first_gray(),
+                                                                    payload.get_gesture_type()):
                 intended_gesture, intended_direction = intended_gesture_and_direction_map(gesture, direction,
                                                                                           payload.get_gesture_frames(),
                                                                                           payload.get_direction_frames())
@@ -79,11 +74,19 @@ def dynamic_main():
                 intended_combined_gesture = combined_gesture_number_finder(intended_gesture, intended_direction)
                 print(intended_combined_gesture)
                 dynamic_engine(payload.get_mode(), intended_combined_gesture)
+                if payload.get_gesture_type() != 2:
+                    print("changed to type", payload.get_gesture_type())
+                    break
+        if payload.get_gesture_type() == 1:
+            continue
+        else:
+            continue
+
 
 def main_thread():
     thread1 = threading.Thread(target=dynamic_main)
     thread2 = threading.Thread(target=run_flask_server)
-    thread3 = threading.Thread(target=mode_changer)
+    thread3 = threading.Thread(target=settings_changer)
 
     #Start both threads
     thread1.start()

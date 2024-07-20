@@ -128,9 +128,6 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
-        if cv2.waitKey(1) & 0xFF == ord('s'):
-            gesture = 's'
-            yield gesture, "Static"
 
 """
 cap = cv2.VideoCapture(0)

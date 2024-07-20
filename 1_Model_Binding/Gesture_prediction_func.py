@@ -140,9 +140,6 @@ def predict_gesture(cap, model_path, first_gray):
         window_pinner("Hand Crop")
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
-        if cv2.waitKey(1) & 0xFF == ord('s'):
-            gesture = 's'
-            yield gesture
 
 """
 cap = cv2.VideoCapture(0)
