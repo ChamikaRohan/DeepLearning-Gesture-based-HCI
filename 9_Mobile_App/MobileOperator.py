@@ -8,12 +8,14 @@ from Current_application_checker import get_active_application
 
 from Mobile_Application_Actions.Mobile_media_player import mobile_control_media_player
 from Mobile_Application_Actions.Mobile_presentation import mobile_control_presentation
+from Mobile_Application_Actions.Mobile_reading import mobile_control_reading
+from Mobile_Application_Actions.Mobile_system import mobile_control_system
 
 def select_function(argument, gestures):
     switcher = {
         0: mobile_control_media_player,
-        1: default_function,
-        2: default_function,
+        1: mobile_control_system,
+        2: mobile_control_reading,
         3: mobile_control_presentation,
         4: default_function,
         5: default_function,
