@@ -10,6 +10,8 @@ from Mobile_Application_Actions.Mobile_media_player import mobile_control_media_
 from Mobile_Application_Actions.Mobile_presentation import mobile_control_presentation
 from Mobile_Application_Actions.Mobile_reading import mobile_control_reading
 from Mobile_Application_Actions.Mobile_system import mobile_control_system
+from Mobile_Application_Actions.Mobile_youtube import mobile_control_youtube
+from Mobile_Application_Actions.Mobile_zoom import mobile_control_zoom
 
 def select_function(argument, gestures):
     switcher = {
@@ -17,8 +19,8 @@ def select_function(argument, gestures):
         1: mobile_control_system,
         2: mobile_control_reading,
         3: mobile_control_presentation,
-        4: default_function,
-        5: default_function,
+        4: mobile_control_youtube,
+        5: mobile_control_zoom,
         6: default_function,
         7: default_function,
         8: default_function,
