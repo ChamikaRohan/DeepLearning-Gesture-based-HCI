@@ -7,7 +7,7 @@ class Payload:
             cls._instance.__initialized = False
         return cls._instance
 
-    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None):
+    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None, custom_config_path=None):
         if not self.__initialized:
             self._first_gray = first_gray
             self._gesture_type = gesture_type
@@ -15,6 +15,7 @@ class Payload:
             self._model_path = model_path
             self._gesture_frames = gesture_frames
             self._direction_frames = direction_frames
+            self._custom_config_path = custom_config_path
             self.__initialized = True
 
     # Getter and Setter for first_gray
@@ -59,5 +60,10 @@ class Payload:
     def set_direction_frames(self, direction_frames):
         self._direction_frames = direction_frames
 
+    # Getter and Setter for custom_config_path
+    def get_custom_config_path(self):
+        return self._custom_config_path
 
+    def set_custom_config_path(self, custom_config_path):
+        self._custom_config_path = custom_config_path
 

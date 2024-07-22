@@ -1,4 +1,5 @@
 import time
+import sys
 
 from MediaPlayer import control_media_player
 from Presentation import control_presentation
@@ -6,7 +7,7 @@ from System import control_system
 from Reading import control_reading
 from Youtube import control_youtube
 from Zoom import control_zoom
-import sys
+from Custom_application import control_custom_application
 
 sys.path.append('../2_Application_Actions/Utils')
 from Current_application_checker import get_active_application
@@ -19,7 +20,7 @@ def select_function(argument, gestures):
         3: control_presentation,
         4: control_youtube,
         5: control_zoom,
-        6: default_function,
+        6: control_custom_application,
         7: default_function,
         8: default_function,
         9: default_function

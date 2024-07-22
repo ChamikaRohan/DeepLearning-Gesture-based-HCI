@@ -7,13 +7,17 @@ from Custom.Custom_control import custom_application_mapper
 from Custom.Load_gesture_map import load_gesture_map
 from Custom.Window_title_matcher import window_title_matcher
 
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
+
 """
 Function to control media player application
 """
 def control_custom_application(gesture):
     try:
+        payload = Payload()
         #Load configuration from JSON file
-        folder_path = r'C:\\Users\M\Desktop\MotionPilot'
+        folder_path = payload.get_custom_config_path()
         file_path = os.path.join(folder_path, 'custom_configs.json')
         custom_config = load_gesture_map(file_path)
 

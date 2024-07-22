@@ -48,6 +48,7 @@ def initiate_payload():
     payload.set_model_path("../1_Model_Binding/Media/10_gesture_model_25th_attempt.h5")
     payload.set_gesture_frames({0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0})
     payload.set_direction_frames(deque())
+    payload.set_custom_config_path( 'C:\\Users\M\Desktop\MotionPilot')
     return payload
 
 def dynamic_main():
