@@ -80,5 +80,5 @@ custom_config_creator(
     gesture9_act_type, gesture9_act_keys
 )
 """
-
+#custom_window_titles = ["Adobe Photoshop", "Hero12"] meka custom_window_titles = "Adobe Photoshop" mee wdiht save krth wd krnw navigator ekedi, eka nisa rpshnyk na
 
