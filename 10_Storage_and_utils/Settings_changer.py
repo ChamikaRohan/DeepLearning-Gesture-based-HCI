@@ -20,6 +20,8 @@ def settings_changer():
         payload.set_gesture_type(new_gesture_type)
         print(f"Gesture type changed from {current_gesture_type} to: {new_gesture_type}")
 
-    keyboard.on_press_key('s', change_mode)
-    keyboard.on_press_key('g', change_gesture_type)
+    # keyboard.on_press_key('s', change_mode)
+    # keyboard.on_press_key('g', change_gesture_type)
+
+
 
