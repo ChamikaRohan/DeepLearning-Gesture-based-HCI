@@ -357,7 +357,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.min_window is None:
             self.min_window = MinimizeWindow()
 
-        self.min_window.show_page_one()
+        self.min_window.show_pages()
         self.min_window.show()
         self.close()
 

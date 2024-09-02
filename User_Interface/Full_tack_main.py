@@ -1,5 +1,3 @@
-# main_thread.py
-
 import sys
 import threading
 from PyQt6.QtWidgets import QApplication

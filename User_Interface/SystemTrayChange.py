@@ -87,12 +87,5 @@ def TraySelection(gesture_type,mode,application):
 
     return n
 
-#Manual mode-1 Automode-2
-mode = 2
-#static -1 Dynamic-2
-gesture_type =2
-#Application 0-VLC ,1-no, 2-System,3-Reading,4-Presentation,5-Youtube,6-Zoom, 7-Custom
-application = 1
 
-n_value =  TraySelection(gesture_type,mode,application)
 
