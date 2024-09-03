@@ -184,6 +184,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             payload.set_hand_window_status(True)
 
+    def Get_Auto_Button(self):
+        return self.ui.Auto_Mode_Button
+
+    def Get_Manual_Button(self):
+        return self.ui.Manual_Mode_Button
+
+    def Get_Static_Button(self):
+        return self.ui.Auto_Mode_Button_2
+
+    def Get_Dynamic_Button(self):
+        return self.ui.Manual_Mode_Button_2
+
     def on_combo_box_changed(self, index):
         if index == 0:
             self.ui.Action_Types_Stacked_Widget.setCurrentIndex(0)

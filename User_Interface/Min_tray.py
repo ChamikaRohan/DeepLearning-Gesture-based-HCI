@@ -53,23 +53,57 @@ class MinimizeWindow(QMainWindow):
     def Static_Dynamic_Switch(self):
         payload = Payload()
         current_gesture_type = payload.get_gesture_type()
-        new_gesture_type = mode_toggler(current_gesture_type)
-        payload.set_gesture_type(new_gesture_type)
+        if current_gesture_type == 1:
+            new_gesture_type = 2
+            payload.set_gesture_type(new_gesture_type)
+        else:
+            new_gesture_type = 1
+            payload.set_gesture_type(new_gesture_type)
 
     def Auto_Manual_Switch(self):
         payload = Payload()
         current_mode = payload.get_mode()
-        new_mode = mode_toggler(current_mode)
-        payload.set_mode(new_mode)
+        if current_mode == 1:
+            new_mode = 2
+            payload.set_mode(new_mode)
+        else:
+            new_mode = 1
+            payload.set_mode(new_mode)
 
     # Code to connect another window
     def open_main_window(self):
         from UI_main import MainWindow
         if self.main_window is None:
             self.main_window = MainWindow()
-
+        self.set_AutoManual_state(payload.get_mode())
+        self.set_StaticDynamic_state(payload.get_gesture_type())
         self.main_window.show()
         self.close()
+
+    def set_AutoManual_state(self, value):
+        Auto_Button = self.main_window.Get_Auto_Button()
+        Manual_Button = self.main_window.Get_Manual_Button()
+
+        # 0- Auto 1-Manual
+        if value == 2:
+            Auto_Button.setChecked(True)
+            Manual_Button.setChecked(False)
+        elif value == 1:
+            Auto_Button.setChecked(False)
+            Manual_Button.setChecked(True)
+
+    def set_StaticDynamic_state(self, value):
+
+        Static_Button = self.main_window.Get_Static_Button()
+        Dynamic_Button = self.main_window.Get_Dynamic_Button()
+
+        # 1- Static 2-Dynamic
+        if value == 1:
+            Static_Button.setChecked(True)
+            Dynamic_Button.setChecked(False)
+        elif value == 2:
+            Static_Button.setChecked(False)
+            Dynamic_Button.setChecked(True)
 
     def show_pages(self):
         # Initial
