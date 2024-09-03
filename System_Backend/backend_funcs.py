@@ -52,6 +52,7 @@ def initiate_payload():
     payload.set_direction_frames(deque())
     payload.set_custom_config_path( 'C:\\Users\M\Desktop\MotionPilot')
     payload.set_hand_window_status(True)
+    payload.set_application(1)
     return payload
 
 def dynamic_main():

@@ -11,3 +11,45 @@ Gesture names and numbers map
     8: 'Gesture Three Fingers',
     9: 'Gesture Scissor'
 }
+
+#Application no and Application name
+
+#Static Gesture Manual
+Application_number = 0     #VLC
+Application_number = 1     #System
+Application_number = 2     #Reading
+Application_number = 3     #Presentation
+Application_number = 4     #Youtube
+Application_number = 5     #Zoom
+Application_number = 6     #Just the logo
+Application_number = 7     #Just the logo
+
+#Static Gesture Auto
+Application_number = 0     #VLC
+Application_number = 1     #All the applications
+Application_number = 2     #System
+Application_number = 3     #Reading
+Application_number = 4     #Presentation
+Application_number = 5     #Youtube
+Application_number = 6     #Zoom
+Application_number = 7     #Just the logo
+
+#Dynamic Gesture Mnaul
+Application_number = 0     #VLC
+Application_number = 1     #System
+Application_number = 2     #Reading
+Application_number = 3     #Presentation
+Application_number = 4     #Youtube
+Application_number = 5     #Zoom
+Application_number = 6     #Just the logo
+Application_number = 7     #Just the logo
+
+#Static Gesture Auto
+Application_number = 0     #VLC
+Application_number = 1     #All the applications
+Application_number = 2     #System
+Application_number = 3     #Reading
+Application_number = 4     #Presentation
+Application_number = 5     #Youtube
+Application_number = 6     #Zoom
+Application_number = 7     #Just the logo

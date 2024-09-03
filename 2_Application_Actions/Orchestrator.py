@@ -16,6 +16,9 @@ memory = None
 state = False
 action =None
 
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
+
 def select_function(argument, gestures):
     switcher = {
         0: control_media_player,
@@ -37,6 +40,7 @@ def default_function(gesture):
     print("Invalid action called!")
 
 def orchestrator(gesture):
+    payload = Payload()
     global memory, state, action
 
     print("Current action:", action)
@@ -50,6 +54,7 @@ def orchestrator(gesture):
                     action = memory
                     print("Successfully switched to to application "+ str(action))
                     select_function(action, gesture)
+                    payload.set_application(action)
                     speak_application(action)
                 else:
                     if gesture != 1:
@@ -67,6 +72,7 @@ def orchestrator(gesture):
     else:
         if gesture is not None:
             select_function(action, gesture)
+            payload.set_application(action)
             if gesture ==1:
                 if memory is not None:
                     undo_application(memory, action)

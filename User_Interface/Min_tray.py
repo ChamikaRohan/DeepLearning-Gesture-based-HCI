@@ -78,6 +78,7 @@ class MinimizeWindow(QMainWindow):
         payload = Payload()
         gesture_type = payload.get_gesture_type()
         mode = payload.get_mode()
+        application = payload.get_application()
         QTimer.singleShot(2000, lambda: self.change_to_desired_tray(self.give_desired_tray_num(gesture_type, mode, 2)))
 
     def give_desired_tray_num(self, gesture_type, mode, application):
