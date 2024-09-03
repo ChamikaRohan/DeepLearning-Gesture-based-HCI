@@ -154,6 +154,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #Binding
         self.ui.Auto_Mode_Button.toggled.connect(self.Switch_mode)
         self.ui.Auto_Mode_Button_2.toggled.connect(self.Switch_gesture_type)
+        self.ui.Auto_Mode_Button_3.toggled.connect(self.Switch_feedback_window)
 
     def Switch_mode(self):
         payload = Payload()
@@ -166,6 +167,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         current_gesture_type = payload.get_gesture_type()
         new_gesture_type = mode_toggler(current_gesture_type)
         payload.set_gesture_type(new_gesture_type)
+
+    def Switch_feedback_window(self):
+        payload = Payload()
+        current_hand_window_status = payload.get_hand_window_status()
+        if current_hand_window_status:
+            payload.set_hand_window_status(False)
+        else:
+            payload.set_hand_window_status(True)
 
     def on_combo_box_changed(self, index):
         if index == 0:

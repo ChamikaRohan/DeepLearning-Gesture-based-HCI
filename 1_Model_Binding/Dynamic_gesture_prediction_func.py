@@ -122,8 +122,6 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
         #         print("Web-cam feed has noise!, resetting first frame automatically.")
         #         first_gray = first_frame_getter(cap)
 
-        cv2.imshow("Frame", frame)
-        cv2.imshow("Difference", difference)
         window_pinner("Hand Crop")
 
         if cv2.waitKey(1) & 0xFF == ord('q'):

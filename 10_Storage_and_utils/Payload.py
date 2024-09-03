@@ -7,7 +7,7 @@ class Payload:
             cls._instance.__initialized = False
         return cls._instance
 
-    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None, custom_config_path=None):
+    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None, custom_config_path=None, hand_window_status=None):
         if not self.__initialized:
             self._first_gray = first_gray
             self._gesture_type = gesture_type
@@ -16,6 +16,7 @@ class Payload:
             self._gesture_frames = gesture_frames
             self._direction_frames = direction_frames
             self._custom_config_path = custom_config_path
+            self._hand_window_status = hand_window_status
             self.__initialized = True
 
     # Getter and Setter for first_gray
@@ -67,3 +68,9 @@ class Payload:
     def set_custom_config_path(self, custom_config_path):
         self._custom_config_path = custom_config_path
 
+    # Getter and Setter for hand_window_status
+    def get_hand_window_status(self):
+        return self._hand_window_status
+
+    def set_hand_window_status(self, hand_window_status):
+        self._hand_window_status = hand_window_status

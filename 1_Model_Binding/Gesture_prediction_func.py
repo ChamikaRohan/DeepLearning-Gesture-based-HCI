@@ -15,6 +15,8 @@ from Window_pinner import window_pinner
 sys.path.append('../1_Model_Binding')
 from Utils.First_frame_getter import first_frame_getter
 
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
 
 def predict_gesture(cap, model_path, first_gray):
     model = load_model(model_path)
@@ -55,7 +57,13 @@ def predict_gesture(cap, model_path, first_gray):
                 padding = 30  # Adjust the padding as needed
                 hand_crop = difference[max(0, y_min - padding):min(y_max + 10, difference.shape[0]),
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
-                cv2.imshow("Hand Crop", hand_crop)
+
+                payload = Payload()
+                print(payload.get_hand_window_status())
+                if payload.get_hand_window_status():
+                    cv2.imshow("Hand Crop", hand_crop)
+                else:
+                    cv2.destroyAllWindows()
 
                 resized_img = cv2.resize(hand_crop, (75, 75))
 
@@ -135,9 +143,7 @@ def predict_gesture(cap, model_path, first_gray):
         #         print("Web-cam feed has noise!, resetting first frame automatically.")
         #         first_gray = first_frame_getter(cap)
 
-        cv2.imshow("Frame", frame)
-        cv2.imshow("Difference", difference)
-        window_pinner("Hand Crop")
+        # window_pinner("Hand Crop")
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
 
