@@ -159,14 +159,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def Switch_mode(self):
         payload = Payload()
         current_mode = payload.get_mode()
-        new_mode = mode_toggler(current_mode)
-        payload.set_mode(new_mode)
+        if current_mode == 1:
+            new_mode = 2
+            payload.set_mode(new_mode)
+        else:
+            new_mode = 1
+            payload.set_mode(new_mode)
 
     def Switch_gesture_type(self):
         payload = Payload()
         current_gesture_type = payload.get_gesture_type()
-        new_gesture_type = mode_toggler(current_gesture_type)
-        payload.set_gesture_type(new_gesture_type)
+        if current_gesture_type == 1:
+            new_gesture_type = 2
+            payload.set_gesture_type(new_gesture_type)
+        else:
+            new_gesture_type = 1
+            payload.set_gesture_type(new_gesture_type)
 
     def Switch_feedback_window(self):
         payload = Payload()
