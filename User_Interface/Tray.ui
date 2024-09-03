@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1224</width>
+    <width>1300</width>
     <height>40</height>
    </rect>
   </property>
@@ -60,7 +60,496 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
-    <item row="0" column="2">
+    <item row="0" column="0" alignment="Qt::AlignLeft">
+     <widget class="QFrame" name="Right">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QFrame { border: none; }
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>2</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="Move">
+         <property name="maximumSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/more-vertical.svg</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Logo">
+         <property name="maximumSize">
+          <size>
+           <width>35</width>
+           <height>35</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/logo.png</pixmap>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="Line">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_7">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="horizontalSpacing">
+           <number>0</number>
+          </property>
+          <property name="verticalSpacing">
+           <number>3</number>
+          </property>
+          <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
+           <widget class="QLabel" name="Line_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/vertical.png</pixmap>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="3" alignment="Qt::AlignRight|Qt::AlignVCenter">
+     <widget class="QFrame" name="Left">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>600</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #343B48; /* background colour */
+    color: white; /* Text color */
+	border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow */
+}
+QPushButton:pressed {
+    background-color: #2980b9; /* Darker blue when pressed */
+}
+
+#Stop {
+    background-color:#EB3232; /* Red background */
+    color: white; /* Text color */
+	border-radius: 5px; /* Rounded edges */
+    padding:5px;
+}
+#Stop:pressed {
+    background-color: darkred; /* Darker red when pressed */
+}
+
+#Reset {
+    background-color: #568AF2; /* Red background */
+    color: white; /* Text color */
+		border-radius: 5px; /* Rounded edges */
+    padding:5px;
+}
+#Reset:pressed {
+    background-color: darkred; /* Darker red when pressed */
+}
+
+QCheckBox{
+	color:white
+}
+
+QFrame { border: none; }
+
+
+</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_3">
+       <property name="spacing">
+        <number>3</number>
+       </property>
+       <property name="leftMargin">
+        <number>3</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>3</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QFrame" name="Line_3">
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_10">
+          <property name="leftMargin">
+           <number>4</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>4</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QLabel" name="Line_4">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1</width>
+              <height>50</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="pixmap">
+             <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/vertical.png</pixmap>
+            </property>
+            <property name="scaledContents">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="ToggleButton2">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+    color: white;
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_59">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>Dynamic</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator{
+	width :30px;
+	height:30px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/TrayIcon/SystemTray/toggle (1).png);
+
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/TrayIcon/SystemTray/toggle (2).png);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Static</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
+        <widget class="QFrame" name="ToggleButton">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>40</height>
+          </size>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_46">
+          <property name="leftMargin">
+           <number>3</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>3</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QLabel {
+    color: white;
+}</string>
+            </property>
+            <property name="text">
+             <string>Manual</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QCheckBox::indicator{
+	width :30px;
+	height:30px;
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/TrayIcon/SystemTray/toggle (1).png);
+
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/TrayIcon/SystemTray/toggle (2).png);
+}
+</string>
+            </property>
+            <property name="text">
+             <string>Auto</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
+        <widget class="QPushButton" name="Stop">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="sizeIncrement">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Stop</string>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>15</width>
+           <height>15</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
+        <widget class="QPushButton" name="Maximize">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Tray.qrc">
+           <normaloff>:/TrayIcon/SystemTray/maximize-2.svg</normaloff>:/TrayIcon/SystemTray/maximize-2.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignVCenter">
+        <widget class="QPushButton" name="Close">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="Tray.qrc">
+           <normaloff>:/TrayIcon/SystemTray/x.svg</normaloff>:/TrayIcon/SystemTray/x.svg</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
@@ -88,7 +577,7 @@
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>9</number>
       </property>
       <widget class="QWidget" name="Presentation">
        <property name="styleSheet">
@@ -533,7 +1022,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_10">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -606,7 +1095,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -683,7 +1172,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_12">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>3</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -751,7 +1240,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_9">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="sizeConstraint">
                   <enum>QLayout::SetDefaultConstraint</enum>
@@ -822,7 +1311,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_14">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -896,7 +1385,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_13">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -1466,7 +1955,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_34">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -2700,7 +3189,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_17">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -2714,7 +3203,7 @@
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item>
+                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                   <widget class="QLabel" name="Icon_11">
                    <property name="maximumSize">
                     <size>
@@ -2733,7 +3222,7 @@
                    </property>
                   </widget>
                  </item>
-                 <item>
+                 <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                   <widget class="QLabel" name="Text_11">
                    <property name="text">
                     <string>Vol Down</string>
@@ -2762,7 +3251,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_20">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -2824,7 +3313,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_18">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>3</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -2886,7 +3375,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_43">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>3</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -2960,7 +3449,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_23">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -3034,7 +3523,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_22">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -3102,7 +3591,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_41">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -3176,7 +3665,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_21">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="sizeConstraint">
                   <enum>QLayout::SetDefaultConstraint</enum>
@@ -3241,7 +3730,7 @@
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_42">
                  <property name="spacing">
-                  <number>6</number>
+                  <number>4</number>
                  </property>
                  <property name="leftMargin">
                   <number>2</number>
@@ -4687,7 +5176,7 @@
            <property name="bottomMargin">
             <number>0</number>
            </property>
-           <item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QFrame" name="Down_2">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -4703,21 +5192,21 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_78">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
               </property>
-              <item>
+              <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
                <widget class="QLabel" name="Icon_61">
                 <property name="maximumSize">
                  <size>
@@ -4755,7 +5244,7 @@
              </layout>
             </widget>
            </item>
-           <item>
+           <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
             <widget class="QFrame" name="Up_2">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -4776,16 +5265,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_79">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -4853,16 +5342,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_82">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -4921,19 +5410,19 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_80">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="sizeConstraint">
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -4992,7 +5481,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_81">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -5066,7 +5555,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_77">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -5154,6 +5643,9 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_114">
+           <property name="spacing">
+            <number>2</number>
+           </property>
            <property name="leftMargin">
             <number>0</number>
            </property>
@@ -5182,16 +5674,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_86">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5244,16 +5736,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_90">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5306,16 +5798,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_91">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5368,16 +5860,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_88">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5442,16 +5934,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_89">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5484,7 +5976,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Sleep Mode</string>
+                 <string>Sleep</string>
                 </property>
                 <property name="textFormat">
                  <enum>Qt::PlainText</enum>
@@ -5516,16 +6008,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_84">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5558,7 +6050,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Switch App</string>
+                 <string>Switch</string>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -5584,16 +6076,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_85">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5626,7 +6118,7 @@
                  </sizepolicy>
                 </property>
                 <property name="text">
-                 <string>Minimize </string>
+                 <string>Mini</string>
                 </property>
                 <property name="textFormat">
                  <enum>Qt::PlainText</enum>
@@ -5658,19 +6150,19 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_87">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="sizeConstraint">
                <enum>QLayout::SetDefaultConstraint</enum>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5723,16 +6215,16 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_83">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="topMargin">
                <number>0</number>
               </property>
               <property name="rightMargin">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="bottomMargin">
                <number>0</number>
@@ -5845,7 +6337,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_98">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6049,7 +6541,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_97">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6188,7 +6680,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_93">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6262,7 +6754,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_92">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6452,7 +6944,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_102">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6591,7 +7083,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_105">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6721,7 +7213,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_104">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6786,7 +7278,7 @@
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_103">
               <property name="spacing">
-               <number>6</number>
+               <number>0</number>
               </property>
               <property name="leftMargin">
                <number>2</number>
@@ -6907,6 +7399,9 @@
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_110">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
                <number>2</number>
               </property>
@@ -6978,6 +7473,9 @@
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QHBoxLayout" name="horizontalLayout_109">
+              <property name="spacing">
+               <number>0</number>
+              </property>
               <property name="leftMargin">
                <number>2</number>
               </property>
@@ -7270,465 +7768,6 @@
         </item>
        </layout>
       </widget>
-     </widget>
-    </item>
-    <item row="0" column="0" alignment="Qt::AlignLeft">
-     <widget class="QFrame" name="Right">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>16777215</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QFrame { border: none; }
-</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>3</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>3</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QLabel" name="Move">
-         <property name="maximumSize">
-          <size>
-           <width>35</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/more-vertical.svg</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="Logo">
-         <property name="maximumSize">
-          <size>
-           <width>35</width>
-           <height>35</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="pixmap">
-          <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/logo.png</pixmap>
-         </property>
-         <property name="scaledContents">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QFrame" name="Line">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_7">
-          <property name="leftMargin">
-           <number>4</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>4</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <property name="horizontalSpacing">
-           <number>0</number>
-          </property>
-          <property name="verticalSpacing">
-           <number>3</number>
-          </property>
-          <item row="0" column="0" alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-           <widget class="QLabel" name="Line_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>1</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/vertical.png</pixmap>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="3" alignment="Qt::AlignRight|Qt::AlignVCenter">
-     <widget class="QFrame" name="Left">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Fixed" vsizetype="Maximum">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="minimumSize">
-       <size>
-        <width>0</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>600</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QPushButton {
-    background-color: #343B48; /* background colour */
-    color: white; /* Text color */
-	border: none; /* Remove border */
-    box-shadow: none; /* Remove shadow */
-}
-QPushButton:pressed {
-    background-color: #2980b9; /* Darker blue when pressed */
-}
-
-#Stop {
-    background-color:#EB3232; /* Red background */
-    color: white; /* Text color */
-	border-radius: 5px; /* Rounded edges */
-    padding:5px;
-}
-#Stop:pressed {
-    background-color: darkred; /* Darker red when pressed */
-}
-
-#Reset {
-    background-color: #568AF2; /* Red background */
-    color: white; /* Text color */
-		border-radius: 5px; /* Rounded edges */
-    padding:5px;
-}
-#Reset:pressed {
-    background-color: darkred; /* Darker red when pressed */
-}
-
-QCheckBox{
-	color:white
-}
-
-QFrame { border: none; }
-
-
-</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <property name="spacing">
-        <number>3</number>
-       </property>
-       <property name="leftMargin">
-        <number>3</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>3</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QFrame" name="Line_3">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_10">
-          <property name="leftMargin">
-           <number>4</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>4</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <item row="0" column="0">
-           <widget class="QLabel" name="Line_4">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>1</width>
-              <height>50</height>
-             </size>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="pixmap">
-             <pixmap resource="Tray.qrc">:/TrayIcon/SystemTray/vertical.png</pixmap>
-            </property>
-            <property name="scaledContents">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignVCenter">
-        <widget class="QPushButton" name="Reset">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Reset</string>
-         </property>
-         <property name="icon">
-          <iconset resource="Tray.qrc">
-           <normaloff>:/TrayIcon/SystemTray/monitor.svg</normaloff>:/TrayIcon/SystemTray/monitor.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>14</width>
-           <height>14</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignVCenter">
-        <widget class="QFrame" name="ToggleButton">
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_46">
-          <property name="leftMargin">
-           <number>3</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>3</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <item>
-           <widget class="QLabel" name="label_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QLabel {
-    color: white;
-}</string>
-            </property>
-            <property name="text">
-             <string>Manual</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QCheckBox" name="checkBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">QCheckBox::indicator{
-	width :30px;
-	height:30px;
-}
-
-QCheckBox::indicator:checked {
-    image: url(:/TrayIcon/SystemTray/toggle (1).png);
-
-}
-
-QCheckBox::indicator:unchecked {
-    image: url(:/TrayIcon/SystemTray/toggle (2).png);
-}
-</string>
-            </property>
-            <property name="text">
-             <string>Auto</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignVCenter">
-        <widget class="QPushButton" name="Stop">
-         <property name="minimumSize">
-          <size>
-           <width>60</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>25</height>
-          </size>
-         </property>
-         <property name="sizeIncrement">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Stop</string>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>15</width>
-           <height>15</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignVCenter">
-        <widget class="QPushButton" name="Maximize">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="Tray.qrc">
-           <normaloff>:/TrayIcon/SystemTray/maximize-2.svg</normaloff>:/TrayIcon/SystemTray/maximize-2.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item alignment="Qt::AlignVCenter">
-        <widget class="QPushButton" name="Close">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="Tray.qrc">
-           <normaloff>:/TrayIcon/SystemTray/x.svg</normaloff>:/TrayIcon/SystemTray/x.svg</iconset>
-         </property>
-         <property name="iconSize">
-          <size>
-           <width>25</width>
-           <height>25</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </item>
    </layout>

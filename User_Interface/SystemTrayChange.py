@@ -88,4 +88,24 @@ def TraySelection(gesture_type,mode,application):
     return n
 
 
+def Auto_Manual_Selection(mode):
+    # mode : 1-Manual 2-Auto
+    if (mode == 1):
+        x = False
+    if (mode == 2):
+        x = True
+
+    return x
+
+
+def Dynamic_Static_Selection(gesture):
+    # Gesture type : 1-Static Gestures 2-Dynamic Gestures
+    if (gesture == 1):
+        x = True
+    if (gesture == 2):
+        x = False
+
+    return x
+
+
 
