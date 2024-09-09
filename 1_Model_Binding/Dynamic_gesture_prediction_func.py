@@ -20,6 +20,9 @@ from Utils.First_frame_getter import first_frame_getter
 sys.path.append('../3_Intended_Gesture_Mapping')
 from dynamic_intended_gesture_mapping_func import intended_gesture_and_direction_map
 
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
+
 import cv2
 import numpy as np
 import mediapipe as mp
@@ -70,7 +73,12 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
                 padding = 30
                 hand_crop = difference[max(0, y_min - padding):min(y_max + 10, difference.shape[0]),
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
-                cv2.imshow("Hand Crop", hand_crop)
+
+                payload = Payload()
+                if payload.get_hand_window_status():
+                    cv2.imshow("Hand Crop", hand_crop)
+                else:
+                    cv2.destroyAllWindows()
 
                 resized_img = cv2.resize(hand_crop, (75, 75))
                 img_rgb = cv2.cvtColor(resized_img, cv2.COLOR_GRAY2RGB)
@@ -117,13 +125,14 @@ def predict_gesture_and_direction(cap, model_path, first_gray, gesture_type):
             else:
                 yield gesture, direction
 
-        # else:
-        #     if auto_first_frame_setter(difference):
-        #         print("Web-cam feed has noise!, resetting first frame automatically.")
-        #         first_gray = first_frame_getter(cap)
+        else:
+            if auto_first_frame_setter(difference):
+                print("Web-cam feed has noise!, resetting first frame automatically.")
+                first_gray = first_frame_getter(cap)
 
-        window_pinner("Hand Crop")
-
+        payload = Payload()
+        if payload.get_hand_window_status():
+            window_pinner("Hand Crop")
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
 

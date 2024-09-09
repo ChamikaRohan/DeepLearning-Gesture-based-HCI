@@ -75,8 +75,8 @@ class MinimizeWindow(QMainWindow):
         from UI_main import MainWindow
         if self.main_window is None:
             self.main_window = MainWindow()
-        self.set_AutoManual_state(payload.get_mode())
-        self.set_StaticDynamic_state(payload.get_gesture_type())
+        # self.set_AutoManual_state(payload.get_mode())
+        # self.set_StaticDynamic_state(payload.get_gesture_type())
         self.main_window.show()
         self.close()
 

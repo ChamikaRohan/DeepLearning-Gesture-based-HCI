@@ -59,7 +59,6 @@ def predict_gesture(cap, model_path, first_gray):
                             max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
 
                 payload = Payload()
-                print(payload.get_hand_window_status())
                 if payload.get_hand_window_status():
                     cv2.imshow("Hand Crop", hand_crop)
                 else:
@@ -138,12 +137,16 @@ def predict_gesture(cap, model_path, first_gray):
                     else:
                         gesture = None
                 yield gesture
-        # else:
-        #     if auto_first_frame_setter(difference):
-        #         print("Web-cam feed has noise!, resetting first frame automatically.")
-        #         first_gray = first_frame_getter(cap)
+        else:
+            if auto_first_frame_setter(difference):
+                print("Web-cam feed has noise!, resetting first frame automatically.")
+                first_gray = first_frame_getter(cap)
 
-        # window_pinner("Hand Crop")
+        payload = Payload()
+        cv2.imshow("Frame", frame)
+        cv2.imshow("Difference", difference)
+        if payload.get_hand_window_status():
+            window_pinner("Hand Crop")
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
 

@@ -1,3 +1,5 @@
+import traceback
+
 class Payload:
     _instance = None
 
@@ -17,7 +19,7 @@ class Payload:
             self._direction_frames = direction_frames
             self._custom_config_path = custom_config_path
             self._hand_window_status = hand_window_status
-            self._application = application  # New attribute
+            self._application = application
             self.__initialized = True
 
     # Getter and Setter for first_gray
@@ -27,18 +29,26 @@ class Payload:
     def set_first_gray(self, first_gray):
         self._first_gray = first_gray
 
-    # Getter and Setter for gesture_type
+    # Getter and Setter for gesture_type with change tracking and stack trace
     def get_gesture_type(self):
         return self._gesture_type
 
     def set_gesture_type(self, gesture_type):
+        if self._gesture_type != gesture_type:
+            print(f"gesture_type changed from {self._gesture_type} to {gesture_type}")
+            print("Stack trace where change occurred:")
+            traceback.print_stack(limit=3)  # Print a short stack trace
         self._gesture_type = gesture_type
 
-    # Getter and Setter for mode
+    # Getter and Setter for mode with change tracking and stack trace
     def get_mode(self):
         return self._mode
 
     def set_mode(self, mode):
+        if self._mode != mode:
+            print(f"mode changed from {self._mode} to {mode}")
+            print("Stack trace where change occurred:")
+            traceback.print_stack(limit=3)  # Print a short stack trace
         self._mode = mode
 
     # Getter and Setter for model_path
