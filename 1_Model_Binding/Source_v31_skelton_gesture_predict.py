@@ -77,8 +77,29 @@ def predict_gesture(cap, model_path):
                     if predicted_probability > 0.6:
                         gesture = 5
 
+                elif predicted_class == 6:
+                    if predicted_probability > 0.6:
+                        gesture = 6
+                    else:
+                        gesture = None
+                elif predicted_class == 7:
+                    if predicted_probability > 0.6:
+                        gesture = 7
+                    else:
+                        gesture = None
+                elif predicted_class == 8:
+                    if predicted_probability > 0.6:
+                        gesture = 8
+                    else:
+                        gesture = None
+                elif predicted_class == 9:
+                    if predicted_probability > 0.6:
+                        gesture = 9
+                    else:
+                        gesture = None
+
                 yield predictions
-                print(gesture)
+                print(predicted_class)
 
                 # Show the hand crop and resized image
                 cv2.imshow("Hand Crop", hand_crop)
@@ -93,7 +114,7 @@ def predict_gesture(cap, model_path):
 
 if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
-    model_path = "Media/6_gesture_skelton_model_v5.h5"
+    model_path = "Media/10_gesture_skelton_model_v6.h5"
     while True:
             for gesture in predict_gesture(cap, model_path):
                 print("Predicted Gesture:", gesture)

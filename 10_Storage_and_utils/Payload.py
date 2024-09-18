@@ -20,6 +20,8 @@ class Payload:
             self._custom_config_path = custom_config_path
             self._hand_window_status = hand_window_status
             self._application = application
+            self.is_first_time_gesture_type = True
+            self.is_first_time_mode = True
             self.__initialized = True
 
     # Getter and Setter for first_gray

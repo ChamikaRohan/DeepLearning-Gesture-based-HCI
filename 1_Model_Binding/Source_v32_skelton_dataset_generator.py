@@ -76,7 +76,7 @@ def main():
         return
 
     # Define the folder where images will be saved
-    save_folder = 'hands/5'
+    save_folder = 'hands/9'
 
     # Call the predict_gesture function
     predict_gesture(cap, save_folder)
