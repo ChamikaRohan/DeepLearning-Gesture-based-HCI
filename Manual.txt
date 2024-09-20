@@ -8,7 +8,7 @@ Gesture names and numbers map
     5: 'Gesture L',
     6: 'Gesture Swag',
     7: 'Gesture C',
-    8: 'Gesture Three Fingers',
+    8: 'Gesture Three Fingers',/1
     9: 'Gesture Scissor'
 }
 

@@ -59,12 +59,15 @@ def predict_gesture(cap, save_folder='hands/Attempt_2'):
                 save_image(resized_img, save_folder, f"{image_count}.png")
                 image_count += 1
 
+                # Display the resized image in a feedback window
+                cv2.imshow("Resized Hand Image", resized_img)
+
+        # Break loop if 'q' is pressed
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
 
     cap.release()
     cv2.destroyAllWindows()
-
-
-import cv2
 
 
 def main():

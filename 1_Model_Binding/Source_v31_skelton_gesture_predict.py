@@ -114,7 +114,7 @@ def predict_gesture(cap, model_path):
 
 if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
-    model_path = "Media/10_gesture_skelton_model_v6.h5"
+    model_path = "Media/10_gesture_skelton_model_v8.h5"
     while True:
             for gesture in predict_gesture(cap, model_path):
                 print("Predicted Gesture:", gesture)
