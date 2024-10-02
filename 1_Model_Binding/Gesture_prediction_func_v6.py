@@ -18,15 +18,12 @@ from Utils.First_frame_getter import first_frame_getter
 sys.path.append('../10_Storage_and_utils')
 from Payload import Payload
 
-from collections import deque
-
 def predict_gesture(cap, model_path, first_gray):
     model = load_model(model_path)
 
     # Initialize MediaPipe Hands
     mp_hands = mp.solutions.hands
-    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.1)
-    mp_drawing = mp.solutions.drawing_utils
+    hands = mp_hands.Hands(static_image_mode=False, max_num_hands=1, min_detection_confidence=0.5)
 
     gesture = None
 
@@ -40,7 +37,6 @@ def predict_gesture(cap, model_path, first_gray):
 
         # Find hand landmarks using MediaPipe
         results = hands.process(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
-
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
                 # Extract hand region coordinates
@@ -57,32 +53,24 @@ def predict_gesture(cap, model_path, first_gray):
                     if y > y_max:
                         y_max = y
 
-                # Draw hand landmarks on the frame (original image)
-                mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
-                # Create a blank image to draw the skeleton (hand landmarks only)
-                skeleton_image = np.zeros_like(frame)
-
-                # Draw landmarks on the blank image (skeleton image)
-                mp_drawing.draw_landmarks(skeleton_image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
-
-                # Crop hand region from the frame with some padding
-                padding = 20  # Adjust the padding as needed
-
-                skeleton_image = skeleton_image[max(0, y_min - padding):min(y_max + padding, frame.shape[0]),
-                                 max(0, x_min - padding):min(x_max + padding, frame.shape[1])]
-
-                resized_img = cv2.resize(skeleton_image, (75, 75))
+                # Crop hand region from the difference frame with some padding
+                padding = 30  # Adjust the padding as needed
+                hand_crop = difference[max(0, y_min - padding):min(y_max + 10, difference.shape[0]),
+                            max(0, x_min - padding):min(x_max + padding, difference.shape[1])]
 
                 payload = Payload()
-
                 if payload.get_hand_window_status():
-                    cv2.imshow("Hand Crop", resized_img)
+                    cv2.imshow("Hand Crop", hand_crop)
                 else:
                     cv2.destroyAllWindows()
 
+                resized_img = cv2.resize(hand_crop, (75, 75))
+
+                # Convert grayscale to RGB by repeating the single channel
+                img_rgb = cv2.cvtColor(resized_img, cv2.COLOR_GRAY2RGB)
+
                 # Expand dimensions to create a batch of 1 image
-                img_array = np.expand_dims(resized_img, axis=0)
+                img_array = np.expand_dims(img_rgb, axis=0)
                 img_array = img_array.astype('float32') / 255.0  # Normalize to [0, 1]
 
                 # Make predictions
@@ -155,34 +143,18 @@ def predict_gesture(cap, model_path, first_gray):
                 first_gray = first_frame_getter(cap)
 
         payload = Payload()
+        cv2.imshow("Frame", frame)
+        cv2.imshow("Difference", difference)
         if payload.get_hand_window_status():
             window_pinner("Hand Crop")
         if cv2.waitKey(1) & 0xFF == ord('q'):
             first_gray = first_frame_getter(cap)
 
-
-
-
 """
 cap = cv2.VideoCapture(0)
-def initiate_payload():
-    payload = Payload()
-    payload.set_first_gray(first_frame_getter(cap))
-    payload.set_gesture_type(1)
-    payload.set_mode(2)
-    payload.set_model_path("../1_Model_Binding/Media/10_gesture_skelton_model_v13.h5")
-    payload.set_gesture_frames({0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0})
-    payload.set_direction_frames(deque())
-    payload.set_custom_config_path( 'C:\\Users\M\Desktop\MotionPilot')
-    payload.set_hand_window_status(True)
-    payload.set_application(1)
-    return payload
-
-payload = initiate_payload()
-
 update_first_frame = False
 first_gray = first_frame_getter(cap)
-model_path = "Media/10_gesture_skelton_model_v13.h5"
+model_path = "Media/10_gesture_model_25th_attempt.h5"
 for gesture in predict_gesture(cap, model_path, first_gray):
     if gesture is None:
         print("No gesture detected.")
