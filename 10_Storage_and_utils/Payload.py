@@ -1,5 +1,3 @@
-import traceback
-
 class Payload:
     _instance = None
 
@@ -36,10 +34,6 @@ class Payload:
         return self._gesture_type
 
     def set_gesture_type(self, gesture_type):
-        if self._gesture_type != gesture_type:
-            print(f"gesture_type changed from {self._gesture_type} to {gesture_type}")
-            print("Stack trace where change occurred:")
-            traceback.print_stack(limit=3)  # Print a short stack trace
         self._gesture_type = gesture_type
 
     # Getter and Setter for mode with change tracking and stack trace
@@ -47,10 +41,6 @@ class Payload:
         return self._mode
 
     def set_mode(self, mode):
-        if self._mode != mode:
-            print(f"mode changed from {self._mode} to {mode}")
-            print("Stack trace where change occurred:")
-            traceback.print_stack(limit=3)  # Print a short stack trace
         self._mode = mode
 
     # Getter and Setter for model_path
