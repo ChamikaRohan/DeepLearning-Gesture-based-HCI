@@ -22,6 +22,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.gesture = ""
 
         # Set the window icon
 
@@ -73,9 +74,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         for button in Custom_Page_Buttons:
             button.clicked.connect(self.switch_to_addCustomActionTypePage)
+            button.clicked.connect(self.update_gesture)
 
-        self.ui.Back_Button_Custom.clicked.connect(self.switch_to_CustomPage)
+        self.ui.Back_Button_Custom.clicked.connect(self.switch_to_CustomPageAgain)
         self.ui.Action_Type_ComboBox.currentIndexChanged.connect(self.on_combo_box_changed)
+        self.ui.Submit_Button.clicked.connect(self.print_custom_input)
 
         self.ui.Home_Button.clicked.connect(self.switch_to_homePage)
         self.ui.Manual_Button.clicked.connect(self.switch_to_ManualPage)
@@ -143,11 +146,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         QSizeGrip(self.ui.frame_4)
 
-        self.ui.Select_HotKey1_ComboBox.setPlaceholderText("Enter Key 1")
-        self.ui.Select_HotKey2_ComboBox.setPlaceholderText("Enter Key 2")
-        self.ui.Select_HotKey3_ComboBox.setPlaceholderText("Enter Key 3")
+        self.ui.Select_HotKey1_Text.setPlaceholderText("Enter Key 1")
+        self.ui.Select_HotKey2_Text.setPlaceholderText("Enter Key 2")
+        self.ui.Select_HotKey3_Text.setPlaceholderText("Enter Key 3")
 
-        self.ui.Select_Key_ComboBox.setPlaceholderText("Enter Key")
+        self.ui.Select_Key_Text.setPlaceholderText("Enter Key")
 
         self.ui.Application_Name_Text.setPlaceholderText("Enter Application Name")
 
@@ -184,6 +187,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             payload.set_hand_window_status(True)
 
+    def print_custom_input(self, Application_Name):
+        payload = Payload()
+        val = payload.set_application(1)
+        print("Test")
+        return
+
     def Get_Auto_Button(self):
         return self.ui.Auto_Mode_Button
 
@@ -195,6 +204,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def Get_Dynamic_Button(self):
         return self.ui.Manual_Mode_Button_2
+
+    def update_gesture(self):
+        clicked_button = self.sender()  # Get the button that was clicked
+
+        global gesture
+
+        if clicked_button == self.ui.Palm_Button:
+            gesture = "Palm"
+        elif clicked_button == self.ui.Palm_Button_2:
+            gesture = "Palm"
+        elif clicked_button == self.ui.Rock_Button:
+            gesture = "Rock"
+        elif clicked_button == self.ui.Rock_Button_2:
+            gesture = "Rock"
+        elif clicked_button == self.ui.Thumbs_Left_Button:
+            gesture = "Thumbs_Left"
+        elif clicked_button == self.ui.Thumbs_Left_Button_2:
+            gesture = "Thumbs_Left"
+        elif clicked_button == self.ui.V_Button:
+            gesture = "V"
+        elif clicked_button == self.ui.V_Button_2:
+            gesture = "V"
+        elif clicked_button == self.ui.L_Button:
+            gesture = "L"
+        elif clicked_button == self.ui.L_Button_2:
+            gesture = "L"
+        elif clicked_button == self.ui.Swag_Button:
+            gesture = "Swag"
+        elif clicked_button == self.ui.Swag_Button_2:
+            gesture = "Swag"
+        elif clicked_button == self.ui.C_Button:
+            gesture = "C"
+        elif clicked_button == self.ui.C_Button_2:
+            gesture = "C"
+        elif clicked_button == self.ui.Three_Fingers_Button:
+            gesture = "Three_Fingers"
+        elif clicked_button == self.ui.Three_Fingers_Button_2:
+            gesture = "Three_Fingers"
+        elif clicked_button == self.ui.Scissors_Button:
+            gesture = "Scissors"
+        elif clicked_button == self.ui.Scissors_Button_2:
+            gesture = "Scissors"
+
+        print(f"Gesture updated to: {gesture}")
 
     def on_combo_box_changed(self, index):
         if index == 0:
@@ -259,11 +312,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.Start_Stacked_Widget.setCurrentIndex(1)
 
     def switch_to_Stop_Application(self):
+        QApplication.quit()
         self.ui.Start_Stacked_Widget.setCurrentIndex(0)
 
     def switch_to_homePage(self):
         self.ui.Main_Body_Page_Stack.setCurrentIndex(0)
-        self.ui.Start_Stacked_Widget.setCurrentIndex(0)
+        self.ui.Start_Stacked_Widget.setCurrentIndex(1)
         self.ui.Manual_Button_Container.setHidden(True)
         self.ui.Library_Button_Container.setHidden(True)
         self.ui.Manual_Button.setChecked(False)
@@ -279,6 +333,82 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.Gestures_Button.setChecked(False)
         self.ui.Application_Button.setChecked(False)
 
+    def switch_to_CustomPageAgain(self):
+        self.ui.Main_Body_Page_Stack.setCurrentIndex(2)
+        self.ui.Custom_Stacked_Widget.setCurrentIndex(0)
+        self.ui.Manual_Button_Container.setHidden(True)
+        self.ui.Library_Button_Container.setHidden(True)
+        self.ui.Manual_Button.setChecked(False)
+        self.ui.Custom_Button.setChecked(True)
+        self.ui.Gestures_Button.setChecked(False)
+        self.ui.Application_Button.setChecked(False)
+        self.check_and_save_input()
+
+    def check_and_save_input(self):
+        print("Inside check_and_save_input")
+        global gesture
+
+        if gesture == 'Palm':
+            print("works")
+            self.save_input(1)
+
+        elif gesture == 'Rock':
+            self.save_input(2)
+
+        elif gesture == 'Thumbs_Left':
+            self.save_input(3)
+
+        elif gesture == 'V':
+            self.save_input(4)
+
+        elif gesture == 'L':
+            self.save_input(5)
+
+        elif gesture == 'Swag':
+            self.save_input(6)
+
+        elif gesture == 'C':
+            self.save_input(7)
+
+        elif gesture == 'Three_Fingers':
+            self.save_input(8)
+
+        elif gesture == 'Scissors':
+            self.save_input(9)
+
+        else:
+            print("Gesture is not recognized")
+
+    def save_input(self, gesture_number):
+        # Define globals dynamically based on gesture number
+        globals()[f'Selected_Gesture_{gesture_number}'] = None
+        globals()[f'Action_Type_{gesture_number}'] = None
+        globals()[f'Press_Key_{gesture_number}'] = None
+        globals()[f'Hot_Keys_{gesture_number}'] = [None, None, None]  # Array for hotkeys
+        globals()[f'Scroll_Type_{gesture_number}'] = None
+
+        Application_Name = self.ui.Application_Name_Text.text()
+        globals()[f'Selected_Gesture_{gesture_number}'] = gesture
+        globals()[f'Action_Type_{gesture_number}'] = self.ui.Action_Type_ComboBox.currentText()
+
+        print(f"Action Type_{gesture_number}: {globals()[f'Action_Type_{gesture_number}']}")
+        print(f"Application Name: {Application_Name}")
+        print(f"Selected Gesture_{gesture_number}: {globals()[f'Selected_Gesture_{gesture_number}']}")
+
+        if globals()[f'Action_Type_{gesture_number}'] == "Press":
+            globals()[f'Press_Key_{gesture_number}'] = self.ui.Select_Key_Text.currentText()
+            print(f"Press_Key_{gesture_number}: {globals()[f'Press_Key_{gesture_number}']}")
+
+        elif globals()[f'Action_Type_{gesture_number}'] == "HotKey":
+            hot_keys = globals()[f'Hot_Keys_{gesture_number}']
+            hot_keys[0] = self.ui.Select_HotKey1_Text.currentText()
+            hot_keys[1] = self.ui.Select_HotKey2_Text.currentText()
+            hot_keys[2] = self.ui.Select_HotKey3_Text.currentText()
+            print(f"Hot_Keys_{gesture_number}: {hot_keys}")
+
+        elif globals()[f'Action_Type_{gesture_number}'] == "Scroll":
+            globals()[f'Scroll_Type_{gesture_number}'] = self.ui.Select_Scroll_Type_ComboBox.currentText()
+            print(f"Scroll_Type_{gesture_number}: {globals()[f'Scroll_Type_{gesture_number}']}")
 
     def switch_to_LibraryPage(self):
         self.ui.Main_Body_Page_Stack.setCurrentIndex(3)

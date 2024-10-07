@@ -87,11 +87,7 @@ def predict_gesture(cap, model_path, first_gray):
 
                 # Make predictions
                 predictions = model.predict(img_array)
-                # print(predictions)
-                # Get the predicted class label
                 predicted_class = np.argmax(predictions)
-
-                # Get the probability of the predicted class
                 predicted_probability = predictions[0][predicted_class]
 
                 if predicted_class == 0:

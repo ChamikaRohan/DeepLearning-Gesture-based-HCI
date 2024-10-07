@@ -24,7 +24,7 @@ class MinimizeWindow(QMainWindow):
         self.ui.setupUi(self)
 
         # Hide the title bar
-        self.setWindowFlags(Qt.WindowType.FramelessWindowHint)
+        self.setWindowFlags(Qt.WindowType.FramelessWindowHint | Qt.WindowType.WindowStaysOnTopHint)
         # Make the window draggable
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.dragPosition = None
@@ -43,8 +43,11 @@ class MinimizeWindow(QMainWindow):
         # Calling AutoMode ManualMode Button
         self.set_checkbox_state(self.ui.checkBox_2, Dynamic_Static_Selection(payload.get_gesture_type()))
 
-        #Calling the system bar
-        self.show_pages()
+        # Initialize variables to track application state
+        self.current_application = payload.get_application()  # Store the current application state
+
+        # Checking for application change from time to time
+        self.start_application_check()
 
         #Binding
         self.ui.checkBox_2.stateChanged.connect(self.Static_Dynamic_Switch)
@@ -96,13 +99,35 @@ class MinimizeWindow(QMainWindow):
         gesture_type = payload.get_gesture_type()
         mode = payload.get_mode()
         application = payload.get_application()
-        QTimer.singleShot(2000, lambda: self.change_to_desired_tray(self.give_desired_tray_num(gesture_type, mode, 2)))
+        QTimer.singleShot(1000, lambda: self.change_to_desired_tray(self.give_desired_tray_num(gesture_type, mode, application)))
 
     def give_desired_tray_num(self, gesture_type, mode, application):
         return TraySelection(gesture_type, mode, application)
 
     def change_to_desired_tray(self, key):
         self.ui.stackedWidget.setCurrentIndex(key)
+
+    def start_application_check(self):
+        self.application_check_timer = QTimer(self)
+        self.application_check_timer.timeout.connect(self.check_application_change)
+        self.application_check_timer.start(1000)  # Check every second
+
+    def check_application_change(self):
+        payload = Payload()
+        new_application = payload.get_application()
+
+        # If the application has changed, update the tray
+        if new_application != self.current_application:
+            self.current_application = new_application
+            self.update_tray()
+
+    def update_tray(self):
+        gesture_type = payload.get_gesture_type()
+        mode = payload.get_mode()
+        application = self.current_application  # Use updated application
+
+        # Change to the desired tray based on new application state
+        self.change_to_desired_tray(self.give_desired_tray_num(gesture_type, mode, application))
 
     # Code to window Draggable
     def mousePressEvent(self, event):
