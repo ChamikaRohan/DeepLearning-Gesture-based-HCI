@@ -57,6 +57,14 @@ def predict_gesture(cap, model_path, first_gray):
                     if y > y_max:
                         y_max = y
 
+                # Crop hand region from the frame with some padding
+                padding = 20
+
+                hand_tracked_image = frame[max(0, y_min - padding):min(y_max + padding, frame.shape[0]),
+                                     max(0, x_min - padding):min(x_max + padding, frame.shape[1])]
+
+                resized_hand_tracked_img = cv2.resize(hand_tracked_image, (75, 75))
+
                 # Draw hand landmarks on the frame (original image)
                 mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
@@ -66,9 +74,6 @@ def predict_gesture(cap, model_path, first_gray):
                 # Draw landmarks on the blank image (skeleton image)
                 mp_drawing.draw_landmarks(skeleton_image, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-                # Crop hand region from the frame with some padding
-                padding = 20  # Adjust the padding as needed
-
                 skeleton_image = skeleton_image[max(0, y_min - padding):min(y_max + padding, frame.shape[0]),
                                  max(0, x_min - padding):min(x_max + padding, frame.shape[1])]
 
@@ -77,7 +82,7 @@ def predict_gesture(cap, model_path, first_gray):
                 payload = Payload()
 
                 if payload.get_hand_window_status():
-                    cv2.imshow("Hand Crop", resized_img)
+                    cv2.imshow("Hand Crop", resized_hand_tracked_img)
                 else:
                     cv2.destroyAllWindows()
 
