@@ -30,7 +30,7 @@ def predict_gesture(cap, save_folder='hands/Attempt_2'):
     mp_drawing = mp.solutions.drawing_utils
 
     gesture = None
-    image_count = 1650
+    image_count = 3126
     first_gray = first_frame_getter(cap)
 
     while True:
@@ -113,7 +113,7 @@ def main():
         return
 
     # Define the folder where images will be saved
-    save_folder = 'hands/1_1'
+    save_folder = 'hands/9'
 
     # Call the predict_gesture function
     predict_gesture(cap, save_folder)
