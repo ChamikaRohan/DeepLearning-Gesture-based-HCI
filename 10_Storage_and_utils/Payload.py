@@ -7,7 +7,7 @@ class Payload:
             cls._instance.__initialized = False
         return cls._instance
 
-    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None, custom_config_path=None, hand_window_status=None, application=None):
+    def __init__(self, first_gray=None, gesture_type=None, mode=None, model_path=None, gesture_frames=None, direction_frames=None, custom_config_path=None, hand_window_status=None, application=None, memory=None, state=False, action=None):
         if not self.__initialized:
             self._first_gray = first_gray
             self._gesture_type = gesture_type
@@ -20,6 +20,9 @@ class Payload:
             self._application = application
             self.is_first_time_gesture_type = True
             self.is_first_time_mode = True
+            self._memory = memory
+            self._state = state
+            self._action = action
             self.__initialized = True
 
     # Getter and Setter for first_gray
@@ -84,3 +87,23 @@ class Payload:
 
     def set_application(self, application):
         self._application = application
+
+    def get_memory(self):
+        return self._memory
+
+    def set_memory(self, memory):
+        self._memory = memory
+
+    # Getter and Setter for state
+    def get_state(self):
+        return self._state
+
+    def set_state(self, state):
+        self._state = state
+
+    # Getter and Setter for action
+    def get_action(self):
+        return self._action
+
+    def set_action(self, action):
+        self._action = action

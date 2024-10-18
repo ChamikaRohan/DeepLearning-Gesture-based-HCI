@@ -175,6 +175,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if current_gesture_type == 1:
             new_gesture_type = 2
             payload.set_gesture_type(new_gesture_type)
+            if payload.get_mode() == 2:
+                payload.set_state(True)
+                payload.set_action(payload.get_application())
         else:
             new_gesture_type = 1
             payload.set_gesture_type(new_gesture_type)

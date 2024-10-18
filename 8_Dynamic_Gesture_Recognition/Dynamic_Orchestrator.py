@@ -10,9 +10,11 @@ from Application_Actions.System_dynamic import dynamic_control_system
 sys.path.append('../4_Voice_Assistance')
 from Dynamic_switched_application_notifyer import dynamic_speak_application
 
-memory = None
-state = False
-action =None
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
+
+# Initialize Payload instance
+payload = Payload()
 
 def dynamic_select_function(argument, gestures):
     switcher = {
@@ -65,41 +67,44 @@ def dynamic_default_function(gesture):
     print("Invalid dynamic action called!")
 
 def dynamic_orchestrator(gesture):
-    global memory, state, action
+    # Access Payload properties for state and memory
+    state = payload.get_state()
+    memory = payload.get_memory()
+    action = payload.get_action()
 
     print("Current dynamic action:", action)
     print("What memory has:", memory)
 
-    if state == False:
+    if not state:
         if gesture is not None:
             if memory is not None:
-                if gesture == 1 or gesture == 14 or gesture == 15 or gesture == 16 or gesture == 17:
-                    state = True
-                    action = memory
-                    print("Successfully switched to application "+ str(action))
+                if gesture in (1, 14, 15, 16, 17):
+                    payload.set_state(True)
+                    payload.set_action(memory)
+                    print("Successfully switched to application " + str(action))
                     dynamic_select_function(action, gesture)
                     dynamic_speak_application(action)
                 else:
-                    if gesture != 1 or gesture != 14 or gesture != 15 or gesture != 16 or gesture != 17:
-                        action = None
-                        memory = gesture
-                        state = False
+                    if gesture not in (1, 14, 15, 16, 17):
+                        payload.set_action(None)
+                        payload.set_memory(gesture)
+                        payload.set_state(False)
                         print("Need 1 to confirm!")
             else:
-                if gesture != 1 or gesture != 14 or gesture != 15 or gesture != 16 or gesture != 17:
-                    memory = gesture
-                action = None
-                state = False
+                if gesture not in (1, 14, 15, 16, 17):
+                    payload.set_memory(gesture)
+                payload.set_action(None)
+                payload.set_state(False)
         else:
             return
     else:
         if gesture is not None:
             dynamic_select_function(action, gesture)
-            if gesture == 1 or gesture == 14 or gesture == 15 or gesture == 16 or gesture == 17:
+            if gesture in (1, 14, 15, 16, 17):
                 if memory is not None:
-                    #undo_application(memory, action)
-                    state = False
+                    # undo_application(memory, action)  # Assuming this function is defined elsewhere
+                    payload.set_state(False)
                     dynamic_orchestrator(gesture)
                     print("Switching to new application...........")
-            if gesture != 1 or gesture != 14 or gesture != 15 or gesture != 16 or gesture != 17:
-                memory =  gesture
+            if gesture not in (1, 14, 15, 16, 17):
+                payload.set_memory(gesture)

@@ -48,8 +48,9 @@ model_path = "../1_Model_Binding/Media/10_gesture_skelton_model_v13.h5"
 total_predictions = 0
 correct_gesture_predictions = 0
 current_gesture = 0  # Default gesture to check accuracy for
-frame_limit = 300  # Set the limit for frames per gesture
-mid_interval = 150  # Middle of the frame limit for gesture change
+frame_limit_hand1 = 100  # Set the limit for frames for hand 1
+frame_limit_hand2 = 100  # Set the limit for frames for hand 2
+gesture_frame_limit = frame_limit_hand1 + frame_limit_hand2  # Total frames for one gesture
 
 # Store accuracy for each gesture
 gesture_accuracies = {i: None for i in range(10)}
@@ -57,7 +58,7 @@ gesture_accuracies = {i: None for i in range(10)}
 # Loop through predictions and calculate real-time accuracy
 for gesture in predict_gesture(cap, model_path, first_gray):
     # Check if we reached the frame limit for the current gesture
-    if total_predictions < frame_limit:
+    if total_predictions < gesture_frame_limit:
         total_predictions += 1
 
         # Check if the detected gesture matches the current target gesture
@@ -74,17 +75,17 @@ for gesture in predict_gesture(cap, model_path, first_gray):
             accuracy = (correct_gesture_predictions / total_predictions) * 100
             print(f"Real-time accuracy for gesture {current_gesture}: {accuracy:.2f}% over {total_predictions} frames")
 
-    # Check if 150 frames reached for the mid-interval gesture change
-    if total_predictions == mid_interval:
-        print(f"Reached {mid_interval} frames for gesture {current_gesture}. You have 2 seconds to change gesture.")
-        time.sleep(2)  # 2 seconds freedom to change gesture
+    # Check if frame limit reached for hand 1
+    if total_predictions == frame_limit_hand1:
+        print(f"Reached {frame_limit_hand1} frames for gesture {current_gesture}. You have 5 seconds to change gesture.")
+        time.sleep(5)  # 5 seconds freedom to change gesture
 
-    # Check if frame limit reached
-    if total_predictions >= frame_limit:
+    # Check if frame limit reached for hand 2
+    if total_predictions == gesture_frame_limit:
         # Store the accuracy for the current gesture
         gesture_accuracies[current_gesture] = (correct_gesture_predictions / total_predictions) * 100 if total_predictions > 0 else 0
-        print(f"Reached {frame_limit} frames for gesture {current_gesture}. You have 2 seconds to change gesture.")
-        time.sleep(2)  # 2 seconds freedom to change gesture
+        print(f"Reached {gesture_frame_limit} frames for gesture {current_gesture}. You have 5 seconds to change gesture.")
+        time.sleep(5)  # 5 seconds freedom to change gesture
         # Reset counts for the next gesture
         total_predictions = 0
         correct_gesture_predictions = 0

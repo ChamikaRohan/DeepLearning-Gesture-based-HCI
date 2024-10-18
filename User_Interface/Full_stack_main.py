@@ -4,7 +4,7 @@ from PyQt6.QtWidgets import QApplication
 from UI_main import MainWindow
 
 sys.path.append('../System_Backend')
-from backend_funcs import main_thread as backend_main_thread
+from backend_funcs import main_thread as  backend_main_thread
 
 class BackendThread(threading.Thread):
     def __init__(self):
