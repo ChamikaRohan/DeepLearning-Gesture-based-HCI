@@ -1,5 +1,8 @@
 import os
-from Save_gesture_map import save_gesture_map
+import sys
+
+sys.path.append('../2_Application_Actions')
+from Custom.Save_gesture_map import save_gesture_map
 
 """
 Generate a custom configuration JSON based on provided window titles and gestures.

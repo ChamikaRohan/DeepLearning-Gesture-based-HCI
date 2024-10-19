@@ -10,12 +10,16 @@ from User_Interface import *
 
 sys.path.append('../10_Storage_and_utils')
 from Payload import Payload
+from Custom_payload import CustomPayload
 
 sys.path.append('../5_Mode_Selector')
 from Mode_toggler import mode_toggler
 
 sys.path.append('../1_Model_Binding')
 from Utils.First_frame_getter import first_frame_getter
+
+sys.path.append('../2_Application_Actions')
+from Custom.Custom_config_creator import custom_config_creator
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
@@ -190,11 +194,65 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             payload.set_hand_window_status(True)
 
-    def print_custom_input(self, Application_Name):
-        payload = Payload()
-        val = payload.set_application(1)
-        print("Test")
-        return
+    def print_custom_input(self):
+        # Get the instance of the CustomPayload to access stored gesture data.
+        payload = CustomPayload()
+
+        # Retrieve all gesture data from the payload.
+        all_gesture_data = payload.get_action_specific_data()
+
+        # Extract the custom window titles from the UI or another source.
+        custom_window_titles = [self.ui.Application_Name_Text.text()]
+
+        # Prepare variables for each gesture's action type and keys.
+        gesture_act_types = {}
+        gesture_act_keys = {}
+
+        # Loop through each gesture number and retrieve its action type and corresponding keys.
+        for gesture_number in range(10):
+            gesture_data = all_gesture_data.get(str(gesture_number)) or all_gesture_data.get(gesture_number, {})
+
+            action_type = gesture_data.get("action_type", None)
+            keys = []
+
+            # Determine keys based on the action type.
+            if action_type == "Press":
+                keys = gesture_data.get("press_val")
+                action_type = "press"
+            elif action_type == "HotKey":
+                keys = [
+                    gesture_data.get("hotKey_val_1"),
+                    gesture_data.get("hotKey_val_2"),
+                    gesture_data.get("hotKey_val_3")
+                ]
+                # Remove None values from the hotkey list
+                keys = [key for key in keys if key]
+                action_type = "hotkey"
+            elif action_type == "Scroll":
+                keys = gesture_data.get("scroll_val")
+                action_type = "scroll"
+
+            # Store the action type and keys for each gesture.
+            gesture_act_types[f"gesture{gesture_number}_act_type"] = action_type
+            gesture_act_keys[f"gesture{gesture_number}_act_keys"] = keys
+
+        # Pass the extracted data to the custom_config_creator function.
+        custom_config_creator(
+            custom_window_titles,
+            gesture_act_types["gesture0_act_type"], gesture_act_keys["gesture0_act_keys"],
+            gesture_act_types["gesture1_act_type"], gesture_act_keys["gesture1_act_keys"],
+            gesture_act_types["gesture2_act_type"], gesture_act_keys["gesture2_act_keys"],
+            gesture_act_types["gesture3_act_type"], gesture_act_keys["gesture3_act_keys"],
+            gesture_act_types["gesture4_act_type"], gesture_act_keys["gesture4_act_keys"],
+            gesture_act_types["gesture5_act_type"], gesture_act_keys["gesture5_act_keys"],
+            gesture_act_types["gesture6_act_type"], gesture_act_keys["gesture6_act_keys"],
+            gesture_act_types["gesture7_act_type"], gesture_act_keys["gesture7_act_keys"],
+            gesture_act_types["gesture8_act_type"], gesture_act_keys["gesture8_act_keys"],
+            gesture_act_types["gesture9_act_type"], gesture_act_keys["gesture9_act_keys"]
+        )
+
+        # Output a message for debugging or confirmation.
+        print(f"Custom input has been processed and configuration has been saved.")
 
     def Get_Auto_Button(self):
         return self.ui.Auto_Mode_Button
@@ -286,8 +344,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def switch_to_StaticMode(self):
         self.ui.Gesture_Modes_Stacked_Widget.setCurrentIndex(0)
 
-
-
     def switch_to_StaticMode_Of_Auto_Mode(self):
         self.ui.Auto_Mode_Static_Dynamic_Stacked_Widget.setCurrentIndex(0)
         self.ui.Static_Button4.setChecked(True)
@@ -297,7 +353,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def switch_to_DynamicMode(self):
         self.ui.Gesture_Modes_Stacked_Widget.setCurrentIndex(1)
-
 
     def Remove_Button_Check(self):
         self.ui.More_Menu_Widget.setHidden(True)
@@ -352,35 +407,74 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         global gesture
 
         if gesture == 'Palm':
-            print("works")
-            self.save_input(1)
+            self.save_custom_input(0)
 
         elif gesture == 'Rock':
-            self.save_input(2)
+            self.save_custom_input(2)
 
         elif gesture == 'Thumbs_Left':
-            self.save_input(3)
+            self.save_custom_input(3)
 
         elif gesture == 'V':
-            self.save_input(4)
+            self.save_custom_input(4)
 
         elif gesture == 'L':
-            self.save_input(5)
+            self.save_custom_input(5)
 
         elif gesture == 'Swag':
-            self.save_input(6)
+            self.save_custom_input(6)
 
         elif gesture == 'C':
-            self.save_input(7)
+            self.save_custom_input(7)
 
         elif gesture == 'Three_Fingers':
-            self.save_input(8)
+            self.save_custom_input(8)
 
         elif gesture == 'Scissors':
-            self.save_input(9)
-
+            self.save_custom_input(9)
         else:
             print("Gesture is not recognized")
+
+    def save_custom_input(self, gesture_number):
+        # Retrieve the user input
+        application_name = self.ui.Application_Name_Text.text()
+        action_type = self.ui.Action_Type_ComboBox.currentText()
+
+        # Initialize variables for keys, hotkeys, and scroll types
+        press_val = None
+        hotKey_val_1 = None
+        hotKey_val_2 = None
+        hotKey_val_3 = None
+        scroll_val = None
+
+        # Handle different action types and store the values
+        if action_type == "Press":
+            press_val = self.ui.Select_Key_Text.currentText()
+
+        elif action_type == "HotKey":
+            hotKey_val_1 = self.ui.Select_HotKey1_Text.currentText()
+            hotKey_val_2 = self.ui.Select_HotKey2_Text.currentText()
+            hotKey_val_3 = self.ui.Select_HotKey3_Text.currentText()
+
+        elif action_type == "Scroll":
+            scroll_val = self.ui.Select_Scroll_Type_ComboBox.currentText()
+
+        # Store the data in the Payload singleton for the specific gesture number (without application_name)
+        payload = CustomPayload()
+        payload.set_gesture_data(
+            gesture_number=gesture_number,
+            action_type=action_type,
+            press_val=press_val,
+            hotKey_val_1=hotKey_val_1,
+            hotKey_val_2=hotKey_val_2,
+            hotKey_val_3=hotKey_val_3,
+            scroll_val=scroll_val
+        )
+
+        # Output the application name and stored data for debugging
+        print(f"Application Name: {application_name}")
+        stored_data = payload.get_action_specific_data()
+        print(f"Stored Data: {stored_data}")
 
     def save_input(self, gesture_number):
         # Define globals dynamically based on gesture number
