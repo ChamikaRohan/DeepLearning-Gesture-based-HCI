@@ -64,9 +64,13 @@ def dynamic_select_function(argument, gestures):
     return func(gestures)
 
 def dynamic_default_function(gesture):
-    print("Invalid dynamic action called!")
+    payload.set_action(None)
+    payload.set_memory(None)
+    payload.set_state(False)
+    print("Invalid action called, Please give correct action!")
 
 def dynamic_orchestrator(gesture):
+    payload = Payload()
     # Access Payload properties for state and memory
     state = payload.get_state()
     memory = payload.get_memory()
@@ -81,9 +85,10 @@ def dynamic_orchestrator(gesture):
                 if gesture in (1, 14, 15, 16, 17):
                     payload.set_state(True)
                     payload.set_action(memory)
-                    print("Successfully switched to application " + str(action))
-                    dynamic_select_function(action, gesture)
-                    dynamic_speak_application(action)
+                    print("Successfully switched to application " + str(payload.get_action()))
+                    payload.set_application(payload.get_action())
+                    dynamic_select_function(payload.get_action(), gesture)
+                    dynamic_speak_application(payload.get_action())
                 else:
                     if gesture not in (1, 14, 15, 16, 17):
                         payload.set_action(None)
@@ -99,12 +104,13 @@ def dynamic_orchestrator(gesture):
             return
     else:
         if gesture is not None:
-            dynamic_select_function(action, gesture)
+            dynamic_select_function(payload.get_action(), gesture)
             if gesture in (1, 14, 15, 16, 17):
                 if memory is not None:
                     # undo_application(memory, action)  # Assuming this function is defined elsewhere
                     payload.set_state(False)
                     dynamic_orchestrator(gesture)
                     print("Switching to new application...........")
+                    payload.set_application(payload.get_action())
             if gesture not in (1, 14, 15, 16, 17):
                 payload.set_memory(gesture)

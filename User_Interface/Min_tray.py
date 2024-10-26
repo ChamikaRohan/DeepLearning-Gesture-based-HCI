@@ -120,7 +120,6 @@ class MinimizeWindow(QMainWindow):
     def check_application_change(self):
         payload = Payload()
         new_application = payload.get_application()
-
         # If the application has changed, update the tray
         if new_application != self.current_application:
             self.current_application = new_application

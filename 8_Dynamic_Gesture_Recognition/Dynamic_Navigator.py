@@ -12,6 +12,9 @@ from Application_Actions.System_dynamic import dynamic_control_system
 sys.path.append('../2_Application_Actions/Utils')
 from Current_application_checker import get_active_application
 
+sys.path.append('../10_Storage_and_utils')
+from Payload import Payload
+
 def dynamic_select_function(argument, gestures):
     switcher = {
         0: dynamic_control_media_player,
@@ -34,13 +37,15 @@ def dynamic_default_function(gesture):
     print("Invalid dynamic action called!")
 
 def dynamic_navigator(gesture):
-    print("inside tha navigator")
+    print("Inside tha navigator")
+    payload = Payload()
     if gesture is not None:
-        print("calling the function for active application")
+        print("Calling the function for active application")
         active_application = get_active_application()
-        print("active application is :", active_application)
+        print("Active application is :", active_application)
         if active_application is not None:
-            dynamic_select_function(active_application, gesture)
             print("Switching to the application")
+            payload.set_application(active_application)
+            dynamic_select_function(active_application, gesture)
 
     return

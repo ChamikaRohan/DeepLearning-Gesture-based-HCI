@@ -37,7 +37,11 @@ def select_function(argument, gestures):
     return func(gestures)
 
 def default_function(gesture):
-    print("Invalid action called!")
+    global memory, state, action
+    memory = None
+    action = None
+    state = False
+    print("Invalid action called, Please give correct action!")
 
 def orchestrator(gesture):
     payload = Payload()

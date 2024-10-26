@@ -1,26 +1,26 @@
 
 # Static gestures
 def TraySelection(gesture_type,mode,application):
-    
+    print("I am called...")
     #Gesture type : 1-Static Gestures 2-Dynamic Gestures
     if gesture_type == 1:
         # Manual mode
         if mode == 1:
             if application == 0:
                 n = 3
-            if application == 1:
+            elif application == 1:
                 n = 5
-            if application == 2:
+            elif application == 2:
                 n = 1
-            if application == 3:
+            elif application == 3:
                 n = 0
-            if application == 4:
+            elif application == 4:
                 n = 2
-            if application == 5:
+            elif application == 5:
                 n = 6
-            if application == 6:
+            elif application == 6:
                 n = 7
-            if application == 7:
+            elif application == 7:
                 n = 7
 
         # Automode
@@ -29,61 +29,63 @@ def TraySelection(gesture_type,mode,application):
                 n = 3
                 
             #No application
-            if application == 1:
+            elif application == 1:
                 n = 4
-            if application == 2:
+            elif application == 2:
                 n = 5
-            if application == 3:
+            elif application == 3:
                 n = 1
-            if application == 4:
+            elif application == 4:
                 n = 0
-            if application == 5:
+            elif application == 5:
                 n = 2
-            if application == 6:
+            elif application == 6:
                 n = 6
-            if application == 7:
+            elif application == 7:
                 n = 7
+            else:
+                n = 4
+
 
     if gesture_type == 2:
+        print("Im called from manual")
         # Manual mode
         if mode == 1:
             if application == 0:
                 n = 12
-            if application == 1:
+            elif application == 1:
                 n = 11
-            if application == 2:
+            elif application == 2:
                 n = 10
-            if application == 3:
+            elif application == 3:
                 n = 9
-            if application == 4:
+            elif application == 4:
                 n = 13
-            if application == 5:
+            elif application == 5:
                 n = 14
-            if application == 6:
+            elif application == 6:
                 n = 7
-            if application == 7:
+            elif application == 7:
                 n = 7
 
         # Automode
         if mode == 2:
-            if application == 0:
+            if application in [0, 10, 11, 12, 13]:
                 n = 12
-                
-            #No application
-            if application == 1:
+            elif application == 1:
                 n = 8
-            if application == 2:
+            elif application in [2, 18, 19, 20, 21]:
                 n = 11
-            if application == 3:
+            elif application in [3, 22, 23, 24, 25]:
                 n = 10
-            if application == 4:
+            elif application in [4, 26, 27, 28, 29]:
                 n = 9
-            if application == 5:
+            elif application in [5, 30, 31, 32, 33]:
                 n = 13
-            if application == 6:
+            elif application in [6, 34, 35, 36, 37]:
                 n = 14
-            if application == 7:
-                n = 7
+            else:
+                n = 8
 
     return n
 
